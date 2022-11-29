@@ -1,0 +1,8 @@
+.action:hover {
+    background-color: rgba(128, 128, 128, 0.24);
+    cursor: pointer;
+}
+
+.action-text {
+    margin-left: 6px;
+}
