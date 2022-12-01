@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import Action from './Action';
+import PropTypes from "prop-types";
+import Action from "./Action";
 
-function ActionsBar(props) {
-  const { commentCount } = props;
+function ActionsBar({ commentCount }) {
   return (
     <div className="action-bar">
       <Action type="primary" />

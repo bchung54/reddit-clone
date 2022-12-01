@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import PostSubreddit from './atoms/PostSubreddit';
-import JoinButton from './atoms/JoinButton';
-import PostedBy from './PostedBy';
+import PropTypes from "prop-types";
+import PostSubreddit from "./atoms/PostSubreddit";
+import JoinButton from "./atoms/JoinButton";
+import PostedBy from "./PostedBy";
 
 function InfoBar(props) {
   const { subreddit, username, timestamp } = props;

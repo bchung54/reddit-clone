@@ -1,35 +1,36 @@
 .post-list-item {
-    display: flex;
-    padding: 8px;
+  display: flex;
+  padding: 8px;
 }
 
 .post-list-item:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.post-info, .action-bar {
-    display: flex;
-    align-items: center;
+.post-info,
+.action-bar {
+  display: flex;
+  align-items: center;
 }
 
 .post-info > * {
-    margin-right: 6px;
+  margin-right: 6px;
 }
 
 .action {
-    display: flex;
-    align-items: center;
-    padding: 8px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
 }
 
 .icon {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .posted-by {
-    display: flex;
+  display: flex;
 }
 
 .title > * {
-    display: inline;
+  display: inline;
 }

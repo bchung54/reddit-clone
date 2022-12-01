@@ -1,7 +1,7 @@
 .thumbnail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 96px;
-    height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 72px;
 }

@@ -1,4 +1,4 @@
-import '../../styles/joinButton.css';
+import "../../styles/joinButton.css";
 
 function JoinButton() {
   return (

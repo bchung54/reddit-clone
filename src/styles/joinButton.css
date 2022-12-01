@@ -1,19 +1,19 @@
 .join-button {
-    border: none;
-    border-radius: 26px;
-    padding: 4px 16px;
-    background-color: rgb(63, 129, 252);
-    color: white;
-    font-family: Noto Sans, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+  border: none;
+  border-radius: 26px;
+  padding: 4px 16px;
+  background-color: rgb(63, 129, 252);
+  color: white;
+  font-family: Noto Sans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .join-button:hover {
-    opacity: 0.9;
-    cursor: pointer;
+  opacity: 0.9;
+  cursor: pointer;
 }
 
 .join-button:active {
-    opacity: 0.7;
+  opacity: 0.7;
 }

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import timeAgoDisplay from '../functions/timeAgoDisplay';
-import '../styles/postedBy.css';
+import PropTypes from "prop-types";
+import timeAgoDisplay from "../functions/timeAgoDisplay";
+import "../styles/postedBy.css";
 
 function PostedBy(props) {
   const { name, timestamp } = props;
