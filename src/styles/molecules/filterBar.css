@@ -1,0 +1,28 @@
+.filter-bar {
+  display: flex;
+  padding: 10px 12px;
+}
+
+.filter-bar > * {
+  display: flex;
+  font-size: 14px;
+}
+
+.filter-bar a {
+  text-decoration: none;
+}
+
+.filters > *,
+.layout-dropdown {
+  margin-right: 8px;
+  border-radius: 20px;
+  padding: 6px 8px;
+}
+
+.filter-button:focus {
+  background-color: grey;
+}
+
+.layout-dropdown {
+  margin-left: auto;
+}

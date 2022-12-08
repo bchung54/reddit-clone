@@ -1,10 +1,15 @@
 .post-list-item {
   display: flex;
+  width: auto;
   padding: 8px;
 }
 
 .post-list-item:hover {
   cursor: pointer;
+}
+
+.post-body {
+  min-width: 575px;
 }
 
 .post-info,
@@ -15,6 +20,11 @@
 
 .post-info > * {
   margin-right: 6px;
+  font-size: 12px;
+}
+
+.post-info a {
+  text-decoration: none;
 }
 
 .action {
@@ -33,4 +43,5 @@
 
 .title > * {
   display: inline;
+  font-size: 16px;
 }

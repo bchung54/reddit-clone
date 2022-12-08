@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import "../../styles/postSubreddit.css";
+import PropTypes from 'prop-types';
 
 function PostSubreddit(props) {
   const { name } = props;

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import Title from "./Title";
-import InfoBar from "./InfoBar";
-import ActionsBar from "./ActionsBar";
+import PropTypes from 'prop-types';
+import Title from './Title';
+import InfoBar from './InfoBar';
+import ActionsBar from './ActionsBar';
 
 function PostBody(props) {
   const { title, link, subreddit, username, timestamp, commentCount } = props;

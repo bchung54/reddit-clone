@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
-import VoteArrows from './VoteArrows';
-import Thumbnail from './atoms/Thumbnail';
-import PostBody from './PostBody';
-import '../styles/postListItem.css';
+import VoteGroup from '../VoteGroup';
+import Thumbnail from '../../atoms/styled/Thumbnail';
+import PostBody from '../PostBody';
+import '../../../styles/molecules/postListItem.css';
 
 function PostListItem(props) {
   const { votes, title, link, subreddit, username, timestamp, commentCount } =
     props;
   return (
     <div className="post-list-item">
-      <VoteArrows votes={votes} />
+      <VoteGroup votes={votes} />
       <Thumbnail />
       <PostBody
         title={title}

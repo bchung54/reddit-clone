@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import Action from "./Action";
+import PropTypes from 'prop-types';
+import Action from './styled/Action';
 
 function ActionsBar({ commentCount }) {
   return (

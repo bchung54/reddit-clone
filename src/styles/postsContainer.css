@@ -1,0 +1,16 @@
+.posts-container {
+  width: auto;
+  max-width: 2148px;
+}
+
+.posts-container > *:not(.main-heading) {
+  background-color: white;
+}
+
+.main-heading {
+  padding-bottom: 10px;
+}
+
+.filter-bar {
+  margin-bottom: 16px;
+}

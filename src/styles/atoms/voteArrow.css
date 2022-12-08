@@ -10,3 +10,9 @@
 .arrow-down:hover {
   color: rgb(141, 71, 155);
 }
+
+.arrow-up,
+.arrow-down {
+  display: flex;
+  justify-content: center;
+}

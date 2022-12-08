@@ -1,12 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
-import removeHttp from "../functions/removeHttp";
-/* import '../styles/Title.css'; */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import removeHttp from '../../functions/removeHttp';
 
 function Title(props) {
   const { title, link } = props;
   const abridgedLink = removeHttp(link);
-  const domainLastIndex = abridgedLink.indexOf("/");
+  const domainLastIndex = abridgedLink.indexOf('/');
   return (
     <div className="title">
       <h3>{title}</h3>
@@ -14,7 +13,7 @@ function Title(props) {
         {abridgedLink.slice(0, domainLastIndex + 6)}
         ...
       </a>
-      <FontAwesomeIcon icon={["fas", "up-right-from-square"]} />
+      <FontAwesomeIcon icon={['fas', 'up-right-from-square']} />
     </div>
   );
 }
