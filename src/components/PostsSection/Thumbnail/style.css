@@ -1,0 +1,9 @@
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 96px;
+  height: 72px;
+  font-size: 32px;
+  border-radius: 4px;
+}

@@ -1,0 +1,24 @@
+.posts-section {
+  width: 100%;
+  font-family: IBMPlexSans, Arial, sans-serif;
+}
+
+.posts-section > *:not(.main-heading) {
+  background-color: white;
+}
+
+.post-body {
+  min-width: 575px;
+}
+
+.post-list-item {
+  display: flex;
+  justify-content: flex-start;
+  width: auto;
+  padding: 8px 4px;
+}
+
+.post-list-item:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.555);
+  cursor: pointer;
+}

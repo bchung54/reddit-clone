@@ -1,0 +1,26 @@
+.action-bar {
+  display: flex;
+  align-items: center;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 8px;
+  color: inherit;
+}
+
+.action-button:hover {
+  background-color: rgba(128, 128, 128, 0.24);
+  cursor: pointer;
+}
+
+.action-text {
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+.action-bar .icon {
+  font-size: 20px;
+}

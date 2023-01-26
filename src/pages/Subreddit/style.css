@@ -1,0 +1,83 @@
+.subreddit-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 312px;
+  margin-left: 24px;
+  font-size: 14px;
+  gap: 16px;
+}
+
+.subreddit-sidebar .flairs {
+  display: block;
+  overflow-wrap: break-word;
+}
+
+.subreddit-sidebar > div {
+  font-weight: 400;
+}
+
+.subreddit-sidebar h2 {
+  background-color: cyan;
+  margin: 0;
+  border-radius: 3px 3px 0 0;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.subreddit-sidebar .description {
+  padding: 12px;
+  background-color: white;
+}
+
+.subreddit-sidebar .description > div {
+  margin-bottom: 12px;
+}
+
+.subreddit-sidebar .description > div:last-child {
+  margin-bottom: 0;
+}
+
+.subreddit-sidebar .rules .dropdown-button {
+  padding: 0;
+}
+
+.subreddit-sidebar .rules .show-content {
+  padding: 8px 8px 0 16px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.subreddit-sidebar .about .stats {
+  display: flex;
+  width: 286px;
+  margin-top: 18px;
+  gap: 75px;
+}
+
+.subreddit-sidebar .about .stats > div > div {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.subreddit-sidebar .about .stats p {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 4px 0;
+}
+
+.subreddit-sidebar .about .stats .online > div::before {
+  content: '●';
+  margin-right: 4px;
+  color: #46d160;
+}
+
+.tags > span {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  padding: 7px 12px;
+  color: white;
+  overflow-wrap: break-word;
+}

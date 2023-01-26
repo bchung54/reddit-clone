@@ -1,0 +1,14 @@
+.hidden {
+  display: none;
+}
+
+.dropdown-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+.dropdown-text {
+  flex: 1;
+  text-align: left;
+}

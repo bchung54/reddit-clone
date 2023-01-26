@@ -1,0 +1,45 @@
+.filter-bar {
+  display: flex;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+}
+
+.filter-bar > * {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.filter-bar .icon {
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.filter-bar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.filters > *,
+.layout-dropdown {
+  margin-right: 8px;
+  border-radius: 20px;
+  padding: 6px 8px;
+}
+
+.filter-button.active {
+  color: blue;
+}
+
+.filter-button:hover {
+  background-color: rgba(128, 128, 128, 0.329);
+}
+
+.filter-button:focus {
+  background-color: rgba(128, 128, 128, 0.589);
+  color: blue;
+}
+
+.layout-dropdown {
+  margin-left: auto;
+}

@@ -1,0 +1,51 @@
+.accordian {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordian .show-content {
+  background-color: white;
+}
+
+.topics-list .dropdown-button {
+  padding: 8px 24px;
+}
+
+.topics-list .dropdown-list-item {
+  padding: 8px 4px;
+}
+
+.topics-list .show-content {
+  margin-left: 52px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #edeff1;
+}
+
+.popular-list .dropdown-button {
+  padding: 12px;
+}
+
+.popular-list .dropdown-text {
+  font-family: Noto Sans, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.popular-list .show-content {
+  padding: 0 12px;
+  overflow-wrap: break-word;
+}
+
+.popular-list .dropdown-list-item {
+  display: inline-block;
+  margin-right: 24px;
+  margin-bottom: 8px;
+}
+
+.popular-list .dropdown-list-item:hover {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
