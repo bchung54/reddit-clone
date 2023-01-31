@@ -9,17 +9,15 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 // Pages
 import { Home } from 'pages/Home';
 import { Popular } from 'pages/Popular';
-import { Subreddit } from 'pages/Subreddit';
+import { SubredditPage } from 'pages/Subreddit';
 
 // Components
 import { Header } from 'components/Header';
 import { GuestSidebar } from 'components/Sidebar';
 
-// Data
-import { subredditList } from 'data/subredditList';
-
 // Styles
 import './App.css';
+import { PostThread } from 'pages/PostThread';
 
 // This exports the whole icon packs for Brand and Solid.
 library.add(far, fas, fab);
@@ -30,18 +28,16 @@ function App() {
       <Header />
       <GuestSidebar />
       <Routes>
-        <Route index element={<Popular />} />
-        <Route path="/r/home/" element={<Home />} />
-        <Route path="/r/popular/*" element={<Popular />} />
-        {subredditList.map((sub) => {
-          return (
-            <Route
-              path={`/r/${sub.name}/*`}
-              element={<Subreddit subreddit={sub} />}
-              key={sub.name}
-            />
-          );
-        })}
+        <Route path="/*">
+          <Route index element={<Popular />} />
+          <Route path="r/">
+            <Route path="home/*" element={<Home />} />
+            <Route path="popular/*" element={<Popular />} />
+            <Route path=":subredditName/*" element={<SubredditPage />}>
+              <Route path="comments/:postId" element={<PostThread />} />
+            </Route>
+          </Route>
+        </Route>
         <Route path="*" element={<div className="notfound">Not Found</div>} />
       </Routes>
     </div>

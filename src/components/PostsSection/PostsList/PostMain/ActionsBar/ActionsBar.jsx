@@ -1,5 +1,6 @@
-import { Button } from 'components/ui/Button';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Button } from 'components/ui/Button';
 import ActionIcon from './ActionIcon';
 import ActionText from './ActionText';
 import './style.css';
@@ -13,9 +14,9 @@ function ActionsBar({ firstIcon, link, commentCount, onExpand }) {
           <ActionIcon type={firstIcon} />
         </Button>
       ) : (
-        <a className="action-button" href={link}>
+        <Link className="action-button" to={link}>
           <ActionIcon type={firstIcon} />
-        </a>
+        </Link>
       )}
       {actions.map((type) => {
         return (

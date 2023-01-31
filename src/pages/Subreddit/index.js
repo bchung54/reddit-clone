@@ -1,1 +1,1 @@
-export { default as Subreddit } from './Subreddit';
+export { default as SubredditPage } from './SubredditPage';

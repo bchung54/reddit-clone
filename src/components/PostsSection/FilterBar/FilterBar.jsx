@@ -4,7 +4,7 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-function FilterBar({ sorting, activeIndex }) {
+function FilterBar({ currentSub, sorting, activeIndex }) {
   const [active, setActive] = useState(activeIndex);
   return (
     <div className="filter-bar">
@@ -31,7 +31,7 @@ function FilterBar({ sorting, activeIndex }) {
               className={
                 index === active ? 'filter-button active' : 'filter-button'
               }
-              to={`${filter}/`}
+              to={`/r/${currentSub}/${filter}/`}
               onClick={() => setActive(index)}
               key={filter}
             >
@@ -50,6 +50,7 @@ function FilterBar({ sorting, activeIndex }) {
 }
 
 FilterBar.propTypes = {
+  currentSub: PropTypes.string.isRequired,
   sorting: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeIndex: PropTypes.number.isRequired,
 };

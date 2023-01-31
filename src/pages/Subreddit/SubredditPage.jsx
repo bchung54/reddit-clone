@@ -1,14 +1,17 @@
-import PropTypes from 'prop-types';
+import { useParams, Outlet } from 'react-router-dom';
 import { PostsSection } from 'components/PostsSection';
 import { SidebarContainer } from 'components/Sidebar';
 import { Dropdown } from 'components/ui/Dropdown';
 
+import { subredditList } from 'data/subredditList';
 import { defaultPosts } from 'data/defaultPosts';
 import { SubredditHeading } from './SubredditHeading';
 
 import './style.css';
 
-function Subreddit({ subreddit }) {
+function SubredditPage() {
+  const { subredditName } = useParams();
+  const subreddit = subredditList.find((sub) => sub.name === subredditName);
   const posts = defaultPosts.filter(
     (post) => post.subreddit === subreddit.name
   );
@@ -82,18 +85,9 @@ function Subreddit({ subreddit }) {
           </div>
         </SidebarContainer>
       </div>
+      <Outlet />
     </main>
   );
 }
 
-Subreddit.propTypes = {
-  subreddit: PropTypes.objectOf(
-    PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.object),
-      PropTypes.arrayOf(PropTypes.string),
-    ])
-  ).isRequired,
-};
-
-export default Subreddit;
+export default SubredditPage;

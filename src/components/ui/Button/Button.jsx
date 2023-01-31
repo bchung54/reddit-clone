@@ -2,8 +2,18 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 function Button({ className, onClick, children }) {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    if (onClick) {
+      onClick();
+    }
+  };
   return (
-    <button className={`${className}-button`} type="button" onClick={onClick}>
+    <button
+      className={`${className}-button`}
+      type="button"
+      onClick={handleClick}
+    >
       {children}
     </button>
   );

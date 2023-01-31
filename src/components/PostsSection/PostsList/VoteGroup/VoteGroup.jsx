@@ -6,11 +6,14 @@ import './style.css';
 function VoteGroup(props) {
   const { votes } = props;
   const voteDisplay = votes === 0 ? 'Vote' : countDisplay(votes);
+  const handleClick = (e) => {
+    e.stopPropagation();
+  };
   return (
     <div className="vote-arrows">
-      <TbArrowBigTop className="arrow-up" />
+      <TbArrowBigTop className="arrow-up" onClick={handleClick} />
       <div className="vote-count">{voteDisplay}</div>
-      <TbArrowBigDown className="arrow-down" />
+      <TbArrowBigDown className="arrow-down" onClick={handleClick} />
     </div>
   );
 }

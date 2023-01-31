@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { BsHouseDoor, BsArrowUpRightCircleFill } from 'react-icons/bs';
 import { Button } from 'components/ui/Button';
 import { Accordian } from './Accordian';
@@ -14,18 +15,18 @@ export function GuestSidebar() {
     <SidebarContainer name="guest">
       <div className="guest-sidebar-menu">
         <h4>Feeds</h4>
-        <a id="feed-home" href="/r/home">
+        <Link id="feed-home" to="/r/home">
           <span className="icon">
             <BsHouseDoor />
           </span>
           <span className="feed-text">Home</span>
-        </a>
-        <a id="feed-popular" href="/r/popular">
+        </Link>
+        <Link id="feed-popular" to="/r/popular">
           <span className="icon">
             <BsArrowUpRightCircleFill />
           </span>
           <span className="feed-text">Popular</span>
-        </a>
+        </Link>
         <Accordian heading="Topics" />
       </div>
       <div className="sidebar-join-container">
