@@ -1,0 +1,14 @@
+.flairs-widget {
+  display: block;
+  overflow-wrap: break-word;
+}
+
+.tags > span {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  padding: 7px 12px;
+  color: white;
+  overflow-wrap: break-word;
+}

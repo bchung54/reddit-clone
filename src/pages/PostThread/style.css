@@ -1,0 +1,163 @@
+#post-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+#post-overlay .overlay-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  width: calc(100% - 160px);
+}
+
+#post-overlay .header {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 96px);
+  margin: 0 32px;
+  padding: 16px 48px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+#post-overlay .header-content {
+  display: flex;
+}
+
+#post-overlay .header .title {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+}
+
+#post-overlay .overlay-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: grey;
+}
+
+#post-overlay .post-thread {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 740px;
+  min-height: 100vh;
+  margin: 32px 12px 32px 32px;
+  background-color: white;
+}
+
+#post-overlay .post-container {
+  display: flex;
+  width: 100%;
+  background-color: white;
+}
+
+#post-overlay .post-container .post-content {
+  padding-top: 8px;
+}
+
+#post-overlay .post-container .post-content > * {
+  margin: 0 8px 8px;
+}
+
+#post-overlay .post-container .post-title {
+  font-size: 20px;
+}
+
+#post-overlay form {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 40px 24px 46px;
+}
+
+#post-overlay form h3 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#post-overlay form h3 span {
+  color: blue;
+}
+
+#post-overlay textarea {
+  height: 138px;
+  min-width: 638px;
+  border: none;
+  padding: 6px;
+  resize: vertical;
+}
+
+#post-overlay textarea:hover {
+  box-shadow: 0 0 0 1px black;
+}
+
+#post-overlay .text-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#post-overlay .comment-submit-button {
+  width: 98px;
+  margin: 4px 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
+  background-color: grey;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#post-overlay .comment-filter {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 48px 4px;
+  font-size: 12px;
+  gap: 20px;
+}
+
+#post-overlay .comment-list {
+  width: calc(100% - 26px);
+  margin: 16px 16px 0 10px;
+  font-size: 12px;
+}
+
+#post-overlay .comment-list p {
+  font-size: 14px;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background-color: inherit;
+  color: white;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  text-shadow: 0 0 2px white;
+}
+
+.close-button span {
+  font-size: 14px;
+}
+
+#post-overlay .widgets-sidebar {
+  margin: 32px;
+  margin-left: 0;
+}

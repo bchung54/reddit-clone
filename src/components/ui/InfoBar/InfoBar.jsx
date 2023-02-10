@@ -1,15 +1,31 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { PostUserInfo } from 'components/ui/PostUserInfo';
 import { Button } from 'components/ui/Button';
 import timeAgoDisplay from 'utils/timeAgoDisplay';
+import defaultIcon from 'assets/images/subIcons/worldnews.svg';
 import './style.css';
 
-function InfoBar({ subreddit, username, timestamp, singleSubreddit }) {
+function InfoBar({
+  subreddit,
+  subIcon,
+  username,
+  timestamp,
+  showSub,
+  showSubIcon,
+  showJoin,
+}) {
   const timeDisplay = timeAgoDisplay(timestamp);
   return (
     <div className="post-info">
-      {singleSubreddit && (
+      {showSub && (
         <div className="subreddit-label">
+          {showSubIcon && (
+            <img
+              src={subIcon === 'svg' ? defaultIcon : subIcon}
+              alt="sub-icon"
+            />
+          )}
           <Link
             className="post-subreddit"
             to={`/r/${subreddit}`}
@@ -17,23 +33,11 @@ function InfoBar({ subreddit, username, timestamp, singleSubreddit }) {
               e.stopPropagation();
             }}
           >{`r/${subreddit}`}</Link>
-          <Button className="join">Join</Button>
+          {showJoin && <Button className="join">Join</Button>}
           <span>&#x2022;</span>
         </div>
       )}
-      <div className="post-user-info">
-        <span>Posted by</span>
-        <Link
-          className="username"
-          to={`/user/${username}/`}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          {`u/${username}`}
-        </Link>
-        <span className="post-time-display">{timeDisplay}</span>
-      </div>
+      <PostUserInfo username={username} timeDisplay={timeDisplay} />
     </div>
   );
 }
@@ -42,11 +46,17 @@ InfoBar.propTypes = {
   subreddit: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   timestamp: PropTypes.instanceOf(Date).isRequired,
-  singleSubreddit: PropTypes.bool,
+  subIcon: PropTypes.string,
+  showSub: PropTypes.bool,
+  showSubIcon: PropTypes.bool,
+  showJoin: PropTypes.bool,
 };
 
 InfoBar.defaultProps = {
-  singleSubreddit: false,
+  subIcon: '',
+  showSub: false,
+  showSubIcon: false,
+  showJoin: false,
 };
 
 export default InfoBar;

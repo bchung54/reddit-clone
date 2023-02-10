@@ -30,15 +30,16 @@ function App() {
       <Routes>
         <Route path="/*">
           <Route index element={<Popular />} />
-          <Route path="r/">
+          {/* TODO: routing for homepage */}
+          <Route path="r/*">
             <Route path="home/*" element={<Home />} />
             <Route path="popular/*" element={<Popular />} />
             <Route path=":subredditName/*" element={<SubredditPage />}>
-              <Route path="comments/:postId" element={<PostThread />} />
+              <Route path="comments/:postId/*" element={<PostThread />} />
             </Route>
           </Route>
         </Route>
-        <Route path="*" element={<div className="notfound">Not Found</div>} />
+        {/* <Route path="*" element={<div className="notfound">Not Found</div>} /> */}
       </Routes>
     </div>
   );

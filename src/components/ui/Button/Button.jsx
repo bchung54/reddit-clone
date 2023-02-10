@@ -10,7 +10,7 @@ function Button({ className, onClick, children }) {
   };
   return (
     <button
-      className={`${className}-button`}
+      className={className ? `${className}-button` : className}
       type="button"
       onClick={handleClick}
     >
@@ -20,12 +20,13 @@ function Button({ className, onClick, children }) {
 }
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
 Button.defaultProps = {
+  className: '',
   onClick: null,
 };
 

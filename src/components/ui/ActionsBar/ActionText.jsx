@@ -12,6 +12,8 @@ function ActionText(props) {
       return (
         <span className="action-text">{`${commentCountDisplay} comments`}</span>
       );
+    case 'reply':
+      return <span className="action-text">Reply</span>;
     case 'share':
       return <span className="action-text">Share</span>;
     case 'save':

@@ -17,10 +17,10 @@
 }
 
 .action-text {
-  margin-left: 6px;
   font-size: 12px;
 }
 
 .action-bar .icon {
+  margin-right: 6px;
   font-size: 20px;
 }

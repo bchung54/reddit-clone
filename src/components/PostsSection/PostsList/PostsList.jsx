@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { VoteGroup } from './VoteGroup';
+import { VoteGroup } from '../../ui/VoteGroup';
 import { Thumbnail } from './Thumbnail';
 import { PostMain } from './PostMain';
 
@@ -33,7 +33,7 @@ function PostsList({ orderedPosts, singleSub }) {
             username={post.username}
             timestamp={post.timestamp}
             commentCount={post.commentCount}
-            singleSubreddit={singleSub}
+            singleSub={singleSub}
           />
         </div>
       ))}

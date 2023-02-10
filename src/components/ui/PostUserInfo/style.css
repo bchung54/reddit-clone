@@ -1,0 +1,9 @@
+.post-user-info {
+  display: flex;
+  color: grey;
+}
+
+.post-user-info > * {
+  margin-right: 6px;
+  font-size: 12px;
+}

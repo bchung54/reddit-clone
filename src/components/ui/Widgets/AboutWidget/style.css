@@ -1,0 +1,23 @@
+.about-widget .stats {
+  display: flex;
+  width: 286px;
+  margin-top: 18px;
+  gap: 75px;
+}
+
+.about-widget .stats > div > div {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.about-widget .stats p {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 4px 0;
+}
+
+.about-widget .stats .online > div::before {
+  content: '●';
+  margin-right: 4px;
+  color: #46d160;
+}

@@ -3,16 +3,15 @@ import countDisplay from 'utils/countDisplay';
 import { TbArrowBigTop, TbArrowBigDown } from 'react-icons/tb';
 import './style.css';
 
-function VoteGroup(props) {
-  const { votes } = props;
+function VoteGroup({ votes, inline }) {
   const voteDisplay = votes === 0 ? 'Vote' : countDisplay(votes);
   const handleClick = (e) => {
     e.stopPropagation();
   };
   return (
-    <div className="vote-arrows">
+    <div className={`vote-arrows${inline ? '-inline' : ''}`}>
       <TbArrowBigTop className="arrow-up" onClick={handleClick} />
-      <div className="vote-count">{voteDisplay}</div>
+      <span className="vote-count">{voteDisplay}</span>
       <TbArrowBigDown className="arrow-down" onClick={handleClick} />
     </div>
   );
@@ -20,6 +19,11 @@ function VoteGroup(props) {
 
 VoteGroup.propTypes = {
   votes: PropTypes.number.isRequired,
+  inline: PropTypes.bool,
+};
+
+VoteGroup.defaultProps = {
+  inline: false,
 };
 
 export default VoteGroup;

@@ -1,0 +1,33 @@
+.text-formatting {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.text-formatting button {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(135, 138, 140);
+  fill: rgb(68, 78, 89);
+}
+
+.text-formatting button:hover {
+  background-color: rgba(26, 26, 27, 0.1);
+  cursor: pointer;
+}
+
+.text-formatting .markdown-button {
+  height: 42px;
+  width: 95px;
+  margin-left: 15px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(68, 78, 89);
+}

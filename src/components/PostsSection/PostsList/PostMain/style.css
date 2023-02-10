@@ -19,12 +19,20 @@
   text-decoration: underline;
 }
 
-.post-main > .content {
+.post-main > .action-group {
+  display: flex;
+}
+
+.post-main > .action-group .icon {
+  font-size: 20px;
+}
+
+.post-main > .preview {
   display: flex;
   justify-content: center;
   max-height: 819px;
 }
 
-.post-main > .content > img {
+.post-main > .preview > img {
   width: 100%;
 }

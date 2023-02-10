@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from 'components/ui/Button';
+import { ActionIcon } from 'components/ui/ActionIcons';
+import { InfoBar } from 'components/ui/InfoBar';
+import { ActionsBar } from 'components/ui/ActionsBar';
 import Title from './Title';
-import InfoBar from './InfoBar/InfoBar';
-import { ActionsBar } from './ActionsBar';
 import './style.css';
 
 function PostMain({
@@ -13,7 +16,7 @@ function PostMain({
   username,
   timestamp,
   commentCount,
-  singleSubreddit,
+  singleSub,
 }) {
   const [showContent, setShowContent] = useState('expand');
   const handleExpansion = () => {
@@ -43,7 +46,6 @@ function PostMain({
       firstIcon = type;
       break;
     default:
-      firstIcon = type;
   }
 
   return (
@@ -53,15 +55,22 @@ function PostMain({
         subreddit={subreddit}
         username={username}
         timestamp={timestamp}
-        singleSubreddit={singleSubreddit}
+        showSub={!singleSub}
+        showJoin={!singleSub}
       />
-      <ActionsBar
-        firstIcon={firstIcon}
-        link={content}
-        commentCount={commentCount}
-        onExpand={handleExpansion}
-      />
-      {showContent === 'compress' && <div className="content">{preview}</div>}
+      <div className="action-group">
+        {firstIcon === 'expand' || firstIcon === 'compress' ? (
+          <Button className="action" onClick={handleExpansion}>
+            <ActionIcon type={firstIcon} />
+          </Button>
+        ) : (
+          <Link className="action-button" to={content}>
+            <ActionIcon type={firstIcon} />
+          </Link>
+        )}
+        <ActionsBar commentCount={commentCount} />
+      </div>
+      {showContent === 'compress' && <div className="preview">{preview}</div>}
     </div>
   );
 }
@@ -74,7 +83,7 @@ PostMain.propTypes = {
   username: PropTypes.string.isRequired,
   timestamp: PropTypes.instanceOf(Date).isRequired,
   commentCount: PropTypes.number.isRequired,
-  singleSubreddit: PropTypes.bool.isRequired,
+  singleSub: PropTypes.bool.isRequired,
 };
 
 export default PostMain;

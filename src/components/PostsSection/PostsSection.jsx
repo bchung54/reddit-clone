@@ -8,7 +8,7 @@ import './style.css';
 function PostsSection({ postList, popular, home }) {
   const filters = ['hot', 'new', 'top', 'rising'];
   const orderedPosts = filters.map((filter) => orderPosts(postList, filter));
-  const singleSub = popular || home;
+  const singleSub = !popular && !home;
   return (
     <div className="posts-section">
       {popular && <div className="main-heading">Popular posts</div>}
@@ -27,7 +27,7 @@ function PostsSection({ postList, popular, home }) {
           {filters.map((filter, index) => {
             return (
               <Route
-                path={`${filter}/`}
+                path={`${filter}/*`}
                 element={
                   <FilterBar
                     currentSub={
@@ -53,7 +53,7 @@ function PostsSection({ postList, popular, home }) {
         {filters.map((filter, index) => {
           return (
             <Route
-              path={`${filter}/`}
+              path={`${filter}/*`}
               element={
                 <PostsList
                   orderedPosts={orderedPosts[index]}
