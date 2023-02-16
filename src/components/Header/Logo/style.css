@@ -1,9 +1,0 @@
-.logo {
-  display: flex;
-  width: 250px;
-  height: 48px;
-}
-
-.logo img {
-  transform: scale(0.8);
-}

@@ -1,13 +1,21 @@
-import PropTypes from 'prop-types';
+import { useSubreddit } from 'contexts/SubredditContext';
 import './style.css';
 
-export default function FlairsWidget({ flairs, color }) {
+export default function FlairsWidget() {
+  const subreddit = useSubreddit();
   return (
     <div className="flairs-widget">
-      <h2 style={{ backgroundColor: `${color}` }}>Filter by flair</h2>
+      <h2
+        style={{
+          backgroundColor: `${subreddit.color}`,
+          color: `${subreddit.textColor}`,
+        }}
+      >
+        Filter by flair
+      </h2>
       <div className="description">
         <div className="tags">
-          {flairs.map((flair) => {
+          {subreddit.flairs.map((flair) => {
             return (
               <span
                 key={flair.text}
@@ -22,13 +30,3 @@ export default function FlairsWidget({ flairs, color }) {
     </div>
   );
 }
-
-FlairsWidget.propTypes = {
-  flairs: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      color: PropTypes.string,
-    })
-  ).isRequired,
-  color: PropTypes.string.isRequired,
-};

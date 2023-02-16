@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   CgArrowsExpandLeft,
   CgCompressLeft,
@@ -8,9 +9,8 @@ import { BiMessage } from 'react-icons/bi';
 import { TfiShare } from 'react-icons/tfi';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { BsEyeSlash, BsFlag } from 'react-icons/bs';
-import PropTypes from 'prop-types';
 
-function ActionIcon(props) {
+export default function ActionIcon(props) {
   const { type } = props;
   switch (type) {
     case 'expand':
@@ -39,5 +39,3 @@ function ActionIcon(props) {
 ActionIcon.propTypes = {
   type: PropTypes.string.isRequired,
 };
-
-export default ActionIcon;

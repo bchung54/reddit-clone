@@ -13,6 +13,8 @@
 }
 
 .user-dropdown-menu .icon {
+  display: flex;
+  align-items: center;
   margin-right: 12px;
 }
 

@@ -1,26 +1,28 @@
-import PropTypes from 'prop-types';
+import { useSubreddit } from 'contexts/SubredditContext';
 import './style.css';
 
-export default function AboutWidget({
-  about,
-  color,
-  dateCreated,
-  subscribers,
-  online,
-}) {
+export default function AboutWidget() {
+  const subreddit = useSubreddit();
   return (
     <div className="about-widget">
-      <h2 style={{ backgroundColor: `${color}` }}>About Community</h2>
+      <h2
+        style={{
+          backgroundColor: `${subreddit.color}`,
+          color: `${subreddit.textColor}`,
+        }}
+      >
+        About Community
+      </h2>
       <div className="description">
-        <div>{about}</div>
-        <div>{`Created ${dateCreated}`}</div>
+        <div>{subreddit.about}</div>
+        <div>{`Created ${subreddit.dateCreated}`}</div>
         <div className="stats">
           <div className="subscribers">
-            <div>{subscribers}</div>
+            <div>{subreddit.subscribers}</div>
             <p>Members</p>
           </div>
           <div className="online">
-            <div>{online}</div>
+            <div>{subreddit.online}</div>
             <p>Online</p>
           </div>
         </div>
@@ -28,11 +30,3 @@ export default function AboutWidget({
     </div>
   );
 }
-
-AboutWidget.propTypes = {
-  about: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  dateCreated: PropTypes.string.isRequired,
-  subscribers: PropTypes.string.isRequired,
-  online: PropTypes.string.isRequired,
-};

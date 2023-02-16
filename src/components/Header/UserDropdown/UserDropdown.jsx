@@ -1,15 +1,23 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// libraries
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// components
+import { Link } from 'react-router-dom';
 import { Switch } from 'components/ui/Switch';
 import { Dropdown } from 'components/ui/Dropdown';
+
+// icons
 import { CgMoon } from 'react-icons/cg';
 import { SlQuestion } from 'react-icons/sl';
 import { GoMegaphone } from 'react-icons/go';
 import { RxEnter, RxInfoCircled } from 'react-icons/rx';
 import { RiFileList3Line } from 'react-icons/ri';
+
+// styles
 import './style.css';
 
-function UserDropdown() {
+export default function UserDropdown() {
   const moreInfoList = [
     'Reddit iOS',
     'Reddit Android',
@@ -28,27 +36,33 @@ function UserDropdown() {
     'Moderator Code of Conduct',
   ];
   return (
-    <Dropdown icon={<FontAwesomeIcon icon={['far', 'fa-user']} />} selfClose>
+    <Dropdown
+      icon={<FontAwesomeIcon icon={['far', 'fa-user']} className="icon" />}
+      selfClose
+    >
       <div className="user-dropdown-menu">
         <DropdownItem icon={<CgMoon />} text="Dark Mode">
           <Switch name="dark-mode" />
         </DropdownItem>
         <DropdownItem icon={<SlQuestion />} text="Help Center" link />
-        <Dropdown icon={<RxInfoCircled />} labelText="More">
+        <Dropdown icon={<RxInfoCircled className="icon" />} labelText="More">
           {moreInfoList.map((item) => {
             return (
-              <a href="#0" key={item}>
+              <Link to="#0" key={item}>
                 <span>{item}</span>
-              </a>
+              </Link>
             );
           })}
         </Dropdown>
-        <Dropdown icon={<RiFileList3Line />} labelText="Terms & Policies">
+        <Dropdown
+          icon={<RiFileList3Line className="icon" />}
+          labelText="Terms & Policies"
+        >
           {termsAndPoliciesList.map((item) => {
             return (
-              <a href="#0" key={item}>
+              <Link to="#0" key={item}>
                 <span>{item}</span>
-              </a>
+              </Link>
             );
           })}
         </Dropdown>
@@ -64,7 +78,7 @@ function DropdownItem({ icon, text, link, children }) {
     <div className="user-dropdown-item">
       <span className="icon">{icon}</span>
       <span className="item-content">
-        {link ? <a href="#0">{text}</a> : <span>{text}</span>}
+        {link ? <Link to="#0">{text}</Link> : <span>{text}</span>}
         {children && children}
       </span>
     </div>
@@ -82,5 +96,3 @@ DropdownItem.defaultProps = {
   link: false,
   children: null,
 };
-
-export default UserDropdown;

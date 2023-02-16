@@ -35,7 +35,6 @@ function Dropdown({
   if (selfClose) {
     document.addEventListener('mousedown', collapseDropdown);
   }
-
   return (
     <div className="dropdown-container" ref={dropdownRef}>
       <Button className="dropdown" onClick={onClick || handleClick}>
@@ -58,7 +57,7 @@ function Dropdown({
 }
 
 Dropdown.propTypes = {
-  icon: PropTypes.node,
+  icon: PropTypes.element,
   labelText: PropTypes.string,
   showContent: PropTypes.oneOf(['show-content', 'hidden']),
   selfClose: PropTypes.bool,

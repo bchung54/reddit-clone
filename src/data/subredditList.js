@@ -1,9 +1,12 @@
+import defaultIcon from 'assets/images/subIcons/worldnews.svg';
+
 export const subredditList = [
   {
     name: 'Futurology',
     title: 'Future(s) Studies',
     icon: 'https://styles.redditmedia.com/t5_2t7no/styles/communityIcon_5b1rj1migm341.png?width=256&v=enabled&s=bb04fb036df354cba7b65b1af75df4b6b804e10c',
     color: 'rgb(53,71,128)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2t7no/styles/bannerBackgroundImage_bcn2ocycqct31.jpg?width=4000&format=pjpg&v=enabled&s=a210162f791b6c7ab9411361e0361956116cc53a',
     about:
@@ -95,6 +98,7 @@ export const subredditList = [
     title: 'NBA',
     icon: 'https://styles.redditmedia.com/t5_2qo4s/styles/communityIcon_1podsfdai4301.png?width=256&v=enabled&s=e528de66f4b611cfbcc63b1c393ea06639ad6151',
     color: 'rgb(255,165,0)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2qo4s/styles/bannerBackgroundImage_xx01cqppboq61.png?width=4000&v=enabled&s=9d318160f5b60d1589502a62ce1f8e2ed99771c8',
     about: 'A subreddit dedicated to NBA news and discussion.',
@@ -161,8 +165,9 @@ export const subredditList = [
   {
     name: 'AskReddit',
     title: 'Ask Reddit...',
-    icon: 'svg',
+    icon: defaultIcon,
     color: 'rgb(68,78,89)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2qh1i/styles/bannerPositionedImage_przkbr6vwv111.png',
     about:
@@ -241,6 +246,7 @@ export const subredditList = [
     title: 'funny',
     icon: 'https://a.thumbs.redditmedia.com/kIpBoUR8zJLMQlF8azhN-kSBsjVUidHjvZNLuHDONm8.png',
     color: 'rgb(0,121,211)',
+    textColor: 'rgh(255,255,255)',
     bannerURL: '',
     about: "Welcome to r/Funny, Reddit's largest humour depository",
     dateCreated: 'Jan 25, 2008',
@@ -315,6 +321,7 @@ export const subredditList = [
     title: 'Movie News and Discussion',
     icon: 'https://styles.redditmedia.com/t5_2qh3s/styles/communityIcon_yq9ah8eniar81.jpg?width=256&format=pjpg&v=enabled&s=8f37365c563a8960ff102217387d22923856df76',
     color: 'rgb(1,73,128)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2qh3s/styles/bannerBackgroundImage_k1ukyjei82r81.png?width=4000&v=enabled&s=f229bba5bbbdfd74afb95882a07c0cb781a266e7',
     about:
@@ -423,6 +430,7 @@ export const subredditList = [
     title: 'A subreddit for cute and cuddly pictures',
     icon: 'https://styles.redditmedia.com/t5_2qh1o/styles/communityIcon_6fzlk8ukx6s51.jpg?width=256&format=pjpg&v=enabled&s=263e1beab5acebfd0fdc9e138aaffcd4bc6ef7b6',
     color: 'rgb(61,148,148)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2qh1o/styles/bannerBackgroundImage_wmbf6g1dei301.png?width=4000&v=enabled&s=afe67e601fa039860d5a102e135d9d7912cc9d90',
     about:
@@ -497,8 +505,9 @@ export const subredditList = [
   {
     name: 'worldnews',
     title: 'World News',
-    icon: 'svg',
+    icon: defaultIcon,
     color: 'rgb(0,121,211)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_2qh1o/styles/bannerBackgroundImage_wmbf6g1dei301.png?width=4000&v=enabled&s=afe67e601fa039860d5a102e135d9d7912cc9d90',
     about:
@@ -580,6 +589,7 @@ export const subredditList = [
     title: '/r/videos',
     icon: 'https://styles.redditmedia.com/t5_2qh1e/styles/communityIcon_w06ycvuzumg31.jpg?width=256&format=pjpg&v=enabled&s=5f59913f43827e21c7de80e860c3e62af6df0a12',
     color: 'rgb(191,0,34)',
+    textColor: 'rgb(255,255,255)',
     bannerURL: '',
     about:
       "Reddit's main subreddit for videos. Please read the sidebar below for our rules.",
@@ -644,6 +654,7 @@ export const subredditList = [
     title: 'Valheim',
     icon: 'https://styles.redditmedia.com/t5_jb05l/styles/communityIcon_s3236o15ufk41.png?width=256&v=enabled&s=c8118a1238e261f8a07f1b0794f820b4e49ccbf7',
     color: 'rgb(158,23,0)',
+    textColor: 'rgb(255,255,255)',
     bannerURL:
       'https://styles.redditmedia.com/t5_jb05l/styles/bannerBackgroundImage_yuxsts7tw0e61.png?width=4000&v=enabled&s=0eda2385d3f2dad84100eb31f10f273c50ad0f86',
     about:

@@ -1,13 +1,19 @@
-import PropTypes from 'prop-types';
 import { Dropdown } from 'components/ui/Dropdown';
+import { useSubreddit } from 'contexts/SubredditContext';
 import './style.css';
 
-export default function RulesWidget({ color, name, rules }) {
+export default function RulesWidget() {
+  const subreddit = useSubreddit();
   return (
     <div className="rules-widget">
-      <h2 style={{ backgroundColor: `${color}` }}>{`r/${name} Rules`}</h2>
+      <h2
+        style={{
+          backgroundColor: `${subreddit.color}`,
+          color: `${subreddit.textColor}`,
+        }}
+      >{`r/${subreddit.name} Rules`}</h2>
       <div className="description">
-        {rules.map((rule, index) => {
+        {subreddit.rules.map((rule, index) => {
           return (
             <Dropdown
               labelText={`${index + 1}. ${rule.heading}`}
@@ -21,14 +27,3 @@ export default function RulesWidget({ color, name, rules }) {
     </div>
   );
 }
-
-RulesWidget.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  rules: PropTypes.arrayOf(
-    PropTypes.shape({
-      heading: PropTypes.string,
-      subtext: PropTypes.string,
-    })
-  ).isRequired,
-};

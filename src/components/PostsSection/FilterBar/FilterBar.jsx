@@ -1,15 +1,19 @@
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './style.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function FilterBar({ currentSub, sorting, activeIndex }) {
-  const [active, setActive] = useState(activeIndex);
+import './style.css';
+
+export default function FilterBar({
+  root,
+  sortByList,
+  activeIndex,
+  updatePostsSection,
+}) {
   return (
     <div className="filter-bar">
       <div className="filters">
-        {sorting.map((filter, index) => {
+        {sortByList.map((filter, index) => {
           let icon;
           switch (filter) {
             case 'hot':
@@ -29,10 +33,12 @@ function FilterBar({ currentSub, sorting, activeIndex }) {
           return (
             <Link
               className={
-                index === active ? 'filter-button active' : 'filter-button'
+                index === activeIndex ? 'filter-button active' : 'filter-button'
               }
-              to={`/r/${currentSub}/${filter}/`}
-              onClick={() => setActive(index)}
+              to={`${root}${filter}/`}
+              onClick={() => {
+                updatePostsSection(index);
+              }}
               key={filter}
             >
               <FontAwesomeIcon icon={icon} className="icon" />
@@ -50,9 +56,8 @@ function FilterBar({ currentSub, sorting, activeIndex }) {
 }
 
 FilterBar.propTypes = {
-  currentSub: PropTypes.string.isRequired,
-  sorting: PropTypes.arrayOf(PropTypes.string).isRequired,
+  root: PropTypes.string.isRequired,
+  sortByList: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeIndex: PropTypes.number.isRequired,
+  updatePostsSection: PropTypes.func.isRequired,
 };
-
-export default FilterBar;

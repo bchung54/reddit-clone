@@ -1,8 +1,8 @@
 .search-bar {
   width: 650px;
-  margin: 0 120px;
+  margin: 0 auto 0 100px;
   padding: 6px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .search-bar:hover {
@@ -10,11 +10,12 @@
   border-radius: 20px;
 }
 
-label {
+.search-bar label {
   display: flex;
 }
 
 #header-search-bar {
+  width: 100%;
   margin-left: 6px;
   border: none;
 }
@@ -24,5 +25,28 @@ label {
 }
 
 #header-search-bar::placeholder {
+  font-size: 14px;
+}
+
+.search-pill {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0 8px;
+  background-color: rgb(214, 214, 214);
+  font-size: 12px;
+}
+
+.search-pill > *:not(:last-child) {
+  margin-right: 8px;
+}
+
+.search-pill img {
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+}
+
+.search-pill .icon {
   font-size: 14px;
 }

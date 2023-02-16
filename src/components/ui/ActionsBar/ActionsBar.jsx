@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Button } from 'components/ui/Button';
 import { ActionIcon } from 'components/ui/ActionIcons';
-import './style.css';
 import countDisplay from 'utils/countDisplay';
+import './style.css';
 
 export default function ActionsBar({ commentCount, location }) {
   const actions = {

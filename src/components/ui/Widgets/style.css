@@ -7,10 +7,6 @@
   gap: 16px;
 }
 
-.widgets-sidebar > div {
-  font-weight: 400;
-}
-
 .widgets-sidebar h2 {
   background-color: cyan;
   margin: 0;

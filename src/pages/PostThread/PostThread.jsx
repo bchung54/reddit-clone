@@ -1,19 +1,24 @@
+// libraries
+import { useNavigate, useParams } from 'react-router-dom';
 import { TfiClose } from 'react-icons/tfi';
 import { TiDocumentText } from 'react-icons/ti';
-import { useNavigate, useParams } from 'react-router-dom';
+
+// data
 import { subredditList } from 'data/subredditList';
 import { defaultPosts } from 'data/defaultPosts';
 import { defaultComments } from 'data/defaultComments';
+
+// components
 import { VoteGroup } from 'components/ui/VoteGroup';
 import { InfoBar } from 'components/ui/InfoBar';
 import { ActionsBar } from 'components/ui/ActionsBar';
 import { WidgetSidebar } from 'components/ui/Widgets';
-import { Button } from 'components/ui/Button';
 import { TextFormattingBar } from 'components/ui/TextFormattingBar';
+import { Button } from 'components/ui/Button';
 import { CommentStack } from './CommentStack';
 import './style.css';
 
-function PostThread() {
+export default function PostThread() {
   const { postId } = useParams();
   const post = defaultPosts.find((defaultPost) => {
     return defaultPost.id === postId;
@@ -96,5 +101,3 @@ function PostThread() {
     </div>
   );
 }
-
-export default PostThread;

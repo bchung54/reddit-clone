@@ -25,20 +25,26 @@ header > * {
   width: 100%;
 }
 
-.header-main {
-  flex: 1;
-}
-
-.header-actions {
+header > .actions {
   justify-content: right;
   gap: 10px;
   margin-right: 16px;
 }
 
-.header-actions > .dropdown-container {
+header > .actions > .dropdown-container {
   padding: 4px 12px;
 }
 
-.header-actions > .dropdown-container:hover {
+header > .actions > .dropdown-container:hover {
   box-shadow: 0 0 0 1px grey;
+}
+
+header > .main > .logo {
+  display: flex;
+  width: 250px;
+  height: 48px;
+}
+
+header > .main > .logo > img {
+  transform: scale(0.8);
 }

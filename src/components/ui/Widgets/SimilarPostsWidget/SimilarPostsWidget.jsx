@@ -1,17 +1,35 @@
-import { sampleSize } from 'lodash';
+// libraries
 import { Link } from 'react-router-dom';
-import { defaultPosts } from 'data/defaultPosts';
 import { TbArrowBigTop } from 'react-icons/tb';
 import { BiMessage } from 'react-icons/bi';
+import { sampleSize } from 'lodash';
+
+// contexts
+import { useSubreddit } from 'contexts/SubredditContext';
+
+// functions
 import countDisplay from 'utils/countDisplay';
-import './style.css';
 import timeAgoDisplay from 'utils/timeAgoDisplay';
+
+// data
+import { defaultPosts } from 'data/defaultPosts';
+
+// styles
+import './style.css';
 
 export default function SimilarPostsWidget() {
   const similarPosts = sampleSize(defaultPosts, 6);
+  const subreddit = useSubreddit();
   return (
     <div className="similar-posts-widget">
-      <h2>Simiar to this post</h2>
+      <h2
+        style={{
+          backgroundColor: `${subreddit.color}`,
+          color: `${subreddit.textColor}`,
+        }}
+      >
+        Simiar to this post
+      </h2>
       <div className="description">
         {similarPosts.map((post) => {
           return (
@@ -25,8 +43,8 @@ export default function SimilarPostsWidget() {
                 <Link
                   className="post-subreddit"
                   to={`/r/${post.subreddit}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={(event) => {
+                    event.stopPropagation();
                   }}
                 >{`r/${post.subreddit}`}</Link>
               </div>

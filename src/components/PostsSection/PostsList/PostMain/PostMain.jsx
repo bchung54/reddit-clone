@@ -1,14 +1,22 @@
+// libraries
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// contexts
+import { useSubreddit } from 'contexts/SubredditContext';
+
+// components
 import { Button } from 'components/ui/Button';
 import { ActionIcon } from 'components/ui/ActionIcons';
 import { InfoBar } from 'components/ui/InfoBar';
 import { ActionsBar } from 'components/ui/ActionsBar';
 import Title from './Title';
+
+// styles
 import './style.css';
 
-function PostMain({
+export default function PostMain({
   title,
   type,
   content,
@@ -16,9 +24,10 @@ function PostMain({
   username,
   timestamp,
   commentCount,
-  singleSub,
 }) {
   const [showContent, setShowContent] = useState('expand');
+  const currentSubreddit = useSubreddit();
+  const singleSub = currentSubreddit.name !== 'popular';
   const handleExpansion = () => {
     if (showContent === 'expand') {
       setShowContent('compress');
@@ -83,7 +92,4 @@ PostMain.propTypes = {
   username: PropTypes.string.isRequired,
   timestamp: PropTypes.instanceOf(Date).isRequired,
   commentCount: PropTypes.number.isRequired,
-  singleSub: PropTypes.bool.isRequired,
 };
-
-export default PostMain;

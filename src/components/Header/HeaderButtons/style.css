@@ -11,14 +11,14 @@
   padding: 4px 16px;
 }
 
-.signup-button {
+.header-buttons .signup-button {
   border: 1px solid rgb(63, 129, 252);
   border-radius: 16px;
   color: rgb(63, 129, 252);
   font-weight: bold;
 }
 
-.login-button {
+.header-buttons .login-button {
   margin-left: 16px;
   border: 1px solid rgb(63, 129, 252);
   border-radius: 16px;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'components/ui/Button';
 import './style.css';
 
-function HeaderButtons({ userID }) {
+export default function HeaderButtons({ userID }) {
   if (userID === 'guest') {
     return (
       <div className="header-buttons">
@@ -20,5 +20,3 @@ HeaderButtons.propTypes = {
 HeaderButtons.defaultProps = {
   userID: 'guest',
 };
-
-export default HeaderButtons;

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { VoteGroup } from '../../ui/VoteGroup';
+import { VoteGroup } from 'components/ui/VoteGroup';
 import { Thumbnail } from './Thumbnail';
 import { PostMain } from './PostMain';
+import './style.css';
 
-function PostsList({ orderedPosts, singleSub }) {
+export default function PostsList({ orderedPosts }) {
   const navigate = useNavigate();
   return (
     <div className="post-list">
@@ -33,7 +34,6 @@ function PostsList({ orderedPosts, singleSub }) {
             username={post.username}
             timestamp={post.timestamp}
             commentCount={post.commentCount}
-            singleSub={singleSub}
           />
         </div>
       ))}
@@ -56,7 +56,4 @@ PostsList.propTypes = {
       commentCount: PropTypes.number,
     })
   ).isRequired,
-  singleSub: PropTypes.bool.isRequired,
 };
-
-export default PostsList;

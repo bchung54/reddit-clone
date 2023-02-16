@@ -2,14 +2,17 @@
   padding: 16px 24px 0 24px;
 }
 
-.headlines .content {
+.headlines > .content {
   display: flex;
   justify-content: space-between;
   gap: 12px;
 }
 
 .headlines .card {
-  max-height: 178px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
   flex: 1;
   max-width: 375px;
   min-width: 208px;
@@ -19,11 +22,11 @@
   color: white;
 }
 
-.headlines .title {
+.headlines .card .title {
   margin-top: 75px;
 }
 
-.headlines .subtitle {
+.headlines .card .subtitle {
   display: -webkit-box;
   margin-bottom: 8px;
   font-size: 14px;
@@ -34,15 +37,23 @@
   text-overflow: ellipsis;
 }
 
-.headlines .sub-info {
+.headlines .card .sub-info {
+  position: absolute;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
   font-size: 12px;
 }
 
-.headlines .sub-icon {
+.headlines .card .sub-icon {
   margin-right: 4px;
 }
-/* 
-.headlines .img {
-    margin-right: 4px;
-    border: 1px solid white;
-} */
+
+.headlines img {
+  height: 20px;
+  width: 20px;
+  margin-right: 4px;
+  border: 1px solid white;
+  border-radius: 100%;
+  background-color: white;
+}

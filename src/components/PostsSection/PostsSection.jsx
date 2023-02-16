@@ -1,75 +1,44 @@
+// libraries
 import PropTypes from 'prop-types';
-import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+
+// functions
 import orderPosts from 'utils/orderPosts';
+
+// components
 import { FilterBar } from './FilterBar';
 import { PostsList } from './PostsList';
+
+// styles
 import './style.css';
 
-function PostsSection({ postList, popular, home }) {
-  const filters = ['hot', 'new', 'top', 'rising'];
-  const orderedPosts = filters.map((filter) => orderPosts(postList, filter));
-  const singleSub = !popular && !home;
+export default function PostsSection({ root, postList }) {
+  const sortByList = ['hot', 'new', 'top', 'rising'];
+  const orderedPosts = sortByList.map((filter) => orderPosts(postList, filter));
+  const [activeIndex, setActiveIndex] = useState(0);
+  const updateSortBy = (newSortBy) => {
+    setActiveIndex(newSortBy);
+  };
   return (
     <div className="posts-section">
-      {popular && <div className="main-heading">Popular posts</div>}
-      {!home && (
-        <Routes>
-          <Route
-            path="/*"
-            element={
-              <FilterBar
-                currentSub={popular ? 'popular' : `${postList[0].subreddit}`}
-                sorting={filters}
-                activeIndex={0}
-              />
-            }
-          />
-          {filters.map((filter, index) => {
-            return (
-              <Route
-                path={`${filter}/*`}
-                element={
-                  <FilterBar
-                    currentSub={
-                      popular ? 'popular' : `${postList[0].subreddit}`
-                    }
-                    sorting={filters}
-                    activeIndex={index}
-                  />
-                }
-                key={filter}
-              />
-            );
-          })}
-        </Routes>
+      {(root === '/r/popular/' || root === '/') && (
+        <div className="main-heading">Popular posts</div>
       )}
-      <Routes>
-        <Route
-          path="/*"
-          element={
-            <PostsList orderedPosts={orderedPosts[0]} singleSub={singleSub} />
-          }
+      {root !== '/r/home/' && (
+        <FilterBar
+          root={root}
+          sortByList={sortByList}
+          activeIndex={activeIndex}
+          updatePostsSection={updateSortBy}
         />
-        {filters.map((filter, index) => {
-          return (
-            <Route
-              path={`${filter}/*`}
-              element={
-                <PostsList
-                  orderedPosts={orderedPosts[index]}
-                  singleSub={singleSub}
-                />
-              }
-              key={filter}
-            />
-          );
-        })}
-      </Routes>
+      )}
+      <PostsList orderedPosts={orderedPosts[activeIndex]} />
     </div>
   );
 }
 
 PostsSection.propTypes = {
+  root: PropTypes.string,
   postList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -84,13 +53,8 @@ PostsSection.propTypes = {
       commentCount: PropTypes.number,
     })
   ).isRequired,
-  popular: PropTypes.bool,
-  home: PropTypes.bool,
 };
 
 PostsSection.defaultProps = {
-  popular: false,
-  home: false,
+  root: '/',
 };
-
-export default PostsSection;

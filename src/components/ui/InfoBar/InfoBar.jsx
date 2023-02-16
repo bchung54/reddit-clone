@@ -1,16 +1,22 @@
+// libraries
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+// components
 import { PostUserInfo } from 'components/ui/PostUserInfo';
 import { Button } from 'components/ui/Button';
+
+// functions
 import timeAgoDisplay from 'utils/timeAgoDisplay';
-import defaultIcon from 'assets/images/subIcons/worldnews.svg';
+
+// styles
 import './style.css';
 
-function InfoBar({
+export default function InfoBar({
   subreddit,
-  subIcon,
   username,
   timestamp,
+  subIcon,
   showSub,
   showSubIcon,
   showJoin,
@@ -20,17 +26,12 @@ function InfoBar({
     <div className="post-info">
       {showSub && (
         <div className="subreddit-label">
-          {showSubIcon && (
-            <img
-              src={subIcon === 'svg' ? defaultIcon : subIcon}
-              alt="sub-icon"
-            />
-          )}
+          {showSubIcon && <img src={subIcon} alt="sub-icon" />}
           <Link
             className="post-subreddit"
-            to={`/r/${subreddit}`}
-            onClick={(e) => {
-              e.stopPropagation();
+            to={`/r/${subreddit}/`}
+            onClick={(event) => {
+              event.stopPropagation();
             }}
           >{`r/${subreddit}`}</Link>
           {showJoin && <Button className="join">Join</Button>}
@@ -58,5 +59,3 @@ InfoBar.defaultProps = {
   showSubIcon: false,
   showJoin: false,
 };
-
-export default InfoBar;
