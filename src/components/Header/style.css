@@ -15,6 +15,7 @@ header {
   background-color: white;
   padding: 0 20px;
   flex: 1;
+  z-index: 1;
 }
 
 header > * {
@@ -47,4 +48,81 @@ header > .main > .logo {
 
 header > .main > .logo > img {
   transform: scale(0.8);
+}
+
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 5;
+}
+
+.overlay > .auth-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 544px;
+  width: 280px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 48px 60px;
+  font-size: 12px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.auth-card form > * {
+  margin-top: 24px;
+}
+
+.overlay input {
+  border-radius: 40px;
+}
+
+.overlay button:not(.close-button) {
+  border: none;
+  padding: 0;
+  color: blue;
+  text-decoration: underline;
+}
+
+.overlay button:hover,
+.auth-card input[type='submit'] {
+  cursor: pointer;
+}
+
+.overlay .close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: none;
+}
+
+.auth-card .snoo-icon > img {
+  height: 40px;
+}
+
+.auth-card input {
+  height: 40px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.auth-card input[type='submit'] {
+  background-color: #0079d3;
+  color: white;
+  font-weight: 600;
+}
+
+.auth-card .text-divider {
+  margin: 0 4px;
 }

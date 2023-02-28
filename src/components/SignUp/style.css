@@ -1,0 +1,28 @@
+/* .overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+
+.overlay > .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 544px;
+    width: 280px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 48px 60px;
+}
+
+.overlay .close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: none;
+} */

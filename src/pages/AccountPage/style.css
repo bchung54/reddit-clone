@@ -1,0 +1,19 @@
+.account-page {
+  display: flex;
+  align-items: center;
+}
+
+.account-page > .art {
+  background-image: url('../../assets/images/blankpage_art.png');
+  height: 100vh;
+  width: 156px;
+  min-height: 430px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.account-page > .content {
+  width: 392px;
+  padding: 24px;
+  font-size: 14px;
+}

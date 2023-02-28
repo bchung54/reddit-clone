@@ -139,7 +139,7 @@
   font-size: 14px;
 }
 
-.close-button {
+#post-overlay .close-button {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -149,11 +149,11 @@
   cursor: pointer;
 }
 
-.close-button:hover {
+#post-overlay .close-button:hover {
   text-shadow: 0 0 2px white;
 }
 
-.close-button span {
+#post-overlay .close-button span {
   font-size: 14px;
 }
 

@@ -24,6 +24,7 @@
         "prettier/prettier": ["error", { "singleQuote": true }],
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": ["warn", { "custom": "ignore"}],
         "import/prefer-default-export": "off",
         "import/default": "error"
     },
