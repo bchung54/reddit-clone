@@ -37,6 +37,8 @@ const defaultAvatars = colorList.map((color) => {
   });
 });
 
+export const defaultAvatar = defaultAvatars[0][0];
+
 export default function randomAvatarURL() {
   return sample(sample(defaultAvatars));
 }

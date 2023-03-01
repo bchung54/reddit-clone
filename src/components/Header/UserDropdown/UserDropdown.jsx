@@ -7,20 +7,28 @@ import { Link, useNavigate } from 'react-router-dom';
 // components
 import { Switch } from 'components/ui/Switch';
 import { Dropdown } from 'components/ui/Dropdown';
+import { Button } from 'components/ui/Button';
 
 // contexts
 import { useAuth } from 'contexts/AuthContext';
+
+// data
+import { defaultAvatar } from 'data/defaultAvatars';
 
 // icons
 import { CgMoon } from 'react-icons/cg';
 import { SlQuestion } from 'react-icons/sl';
 import { GoMegaphone } from 'react-icons/go';
 import { RxEnter, RxInfoCircled } from 'react-icons/rx';
-import { RiFileList3Line } from 'react-icons/ri';
+import { RiFileList3Line, RiCoinLine } from 'react-icons/ri';
+import { HiOutlineUserCircle } from 'react-icons/hi2';
+import { IoEyeOutline, IoTelescopeOutline } from 'react-icons/io5';
+import { AiOutlineTrademarkCircle } from 'react-icons/ai';
+import { GrShield } from 'react-icons/gr';
+import { FaRegDotCircle } from 'react-icons/fa';
 
 // styles
 import './style.css';
-import { Button } from 'components/ui/Button';
 
 export default function UserDropdown() {
   const moreInfoList = [
@@ -43,7 +51,7 @@ export default function UserDropdown() {
   const [error, setError] = useState();
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  async function handleLogOut() {
+  const handleLogOut = async () => {
     setError();
 
     try {
@@ -52,18 +60,102 @@ export default function UserDropdown() {
     } catch {
       setError('Failed to log out');
     }
+  };
+  if (!currentUser) {
+    return (
+      <Dropdown
+        icon={<FontAwesomeIcon icon={['far', 'fa-user']} className="icon" />}
+        className="guest-container"
+        selfClose
+      >
+        <div className="guest-dropdown dropdown-menu">
+          <DropdownItem icon={<CgMoon />} text="Dark Mode">
+            <Switch name="dark-mode" />
+          </DropdownItem>
+          <DropdownItem icon={<SlQuestion />} text="Help Center" link="#0" />
+          <Dropdown icon={<RxInfoCircled className="icon" />} labelText="More">
+            {moreInfoList.map((item) => {
+              return (
+                <Link to="#0" key={item}>
+                  <span>{item}</span>
+                </Link>
+              );
+            })}
+          </Dropdown>
+          <Dropdown
+            icon={<RiFileList3Line className="icon" />}
+            labelText="Terms & Policies"
+          >
+            {termsAndPoliciesList.map((item) => {
+              return (
+                <Link to="#0" key={item}>
+                  <span>{item}</span>
+                </Link>
+              );
+            })}
+          </Dropdown>
+          <DropdownItem
+            icon={<GoMegaphone />}
+            text="Advertise on Reddit"
+            link="#0"
+          />
+          <DropdownItem icon={<RxEnter />} text="Log In / Sign Up" />
+          {error && <div>{error}</div>}
+        </div>
+      </Dropdown>
+    );
   }
   return (
     <Dropdown
-      icon={<FontAwesomeIcon icon={['far', 'fa-user']} className="icon" />}
-      labelText={currentUser ? currentUser.displayName : ''}
+      icon={<img src={defaultAvatar} alt="avatar" className="avatar" />}
+      contentElement={
+        <div className="avatar-label">
+          <span className="username">{currentUser.displayName}</span>
+          <span className="karma-count">0 karma</span>
+        </div>
+      }
+      className="user-container"
       selfClose
     >
-      <div className="user-dropdown-menu">
-        <DropdownItem icon={<CgMoon />} text="Dark Mode">
-          <Switch name="dark-mode" />
-        </DropdownItem>
-        <DropdownItem icon={<SlQuestion />} text="Help Center" link />
+      <div className="user-dropdown dropdown-menu">
+        <DropdownItem
+          icon={<HiOutlineUserCircle />}
+          text="My Stuff"
+          className="user-option-heading"
+        />
+        <div className="user-option-list">
+          <DropdownItem text="Online Status" className="switch-item">
+            <Switch name="online-status" />
+          </DropdownItem>
+          <DropdownItem text="Profile" link="#0" />
+          <DropdownItem text="Create Avatar" link="#0" />
+          <DropdownItem text="User Settings" link="/settings/" />
+        </div>
+        <DropdownItem
+          icon={<IoEyeOutline />}
+          text="View Options"
+          className="user-option-heading"
+        />
+        <div className="user-option-list">
+          <DropdownItem text="Dark Mode" className="switch-item">
+            <Switch name="dark-mode" />
+          </DropdownItem>
+        </div>
+        <DropdownItem
+          icon={<AiOutlineTrademarkCircle />}
+          text="Create a Community"
+          link="#0"
+        />
+        <DropdownItem
+          icon={<GoMegaphone />}
+          text="Advertise on Reddit"
+          link="#0"
+        />
+        <DropdownItem icon={<RiCoinLine />} text="Coins" link="#0" />
+        <DropdownItem icon={<GrShield />} text="Premium" link="#0" />
+        <DropdownItem icon={<FaRegDotCircle />} text="Talk" link="#0" />
+        <DropdownItem icon={<IoTelescopeOutline />} text="Explore" />
+        <DropdownItem icon={<SlQuestion />} text="Help Center" link="#0" />
         <Dropdown icon={<RxInfoCircled className="icon" />} labelText="More">
           {moreInfoList.map((item) => {
             return (
@@ -85,42 +177,54 @@ export default function UserDropdown() {
             );
           })}
         </Dropdown>
-        <DropdownItem icon={<GoMegaphone />} text="Advertise on Reddit" link />
         <DropdownItem
           icon={<RxEnter />}
-          text={currentUser ? 'Log Out' : 'Log In / Sign Up'}
-          onClick={currentUser ? handleLogOut : null}
+          text="Log Out"
+          onClick={handleLogOut}
         />
         {error && <div>{error}</div>}
+        <div className="footnote">
+          For entertainment and educational purposes only. No rights reserved.
+        </div>
       </div>
     </Dropdown>
   );
 }
 
-function DropdownItem({ icon, text, onClick, link, children }) {
+function DropdownItem({ icon, text, onClick, link, className, children }) {
+  const contentElement = (
+    <>
+      {icon && <span className="icon">{icon}</span>}
+      <span>{text}</span>
+    </>
+  );
   return (
-    <div className="user-dropdown-item">
-      <span className="icon">{icon}</span>
-      <span className="item-content">
-        {link && <Link to="#0">{text}</Link>}
-        {onClick && <Button onClick={onClick}>{text}</Button>}
-        {!onClick && !link && <span>{text}</span>}
-        {children && children}
-      </span>
+    <div className={`dropdown-item ${className}`}>
+      {link && <Link to={link}>{contentElement}</Link>}
+      {onClick && <Button onClick={onClick}>{contentElement}</Button>}
+      {!onClick && !link && (
+        <div>
+          {contentElement}
+          {children && children}
+        </div>
+      )}
     </div>
   );
 }
 
 DropdownItem.propTypes = {
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.node,
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  link: PropTypes.bool,
+  link: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node,
 };
 
 DropdownItem.defaultProps = {
+  icon: null,
   onClick: null,
-  link: false,
+  link: null,
+  className: '',
   children: null,
 };

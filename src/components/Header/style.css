@@ -26,20 +26,6 @@ header > * {
   width: 100%;
 }
 
-header > .actions {
-  justify-content: right;
-  gap: 10px;
-  margin-right: 16px;
-}
-
-header > .actions > .dropdown-container {
-  padding: 4px 12px;
-}
-
-header > .actions > .dropdown-container:hover {
-  box-shadow: 0 0 0 1px grey;
-}
-
 header > .main > .logo {
   display: flex;
   width: 250px;
@@ -50,6 +36,31 @@ header > .main > .logo > img {
   transform: scale(0.8);
 }
 
+header > .actions {
+  justify-content: right;
+  gap: 10px;
+}
+
+header > .actions > .dropdown-container {
+  padding: 4px 12px;
+}
+
+header > .actions > .user-container {
+  width: 212px;
+}
+
+/* User Dropdown */
+header > .actions .show-content {
+  position: relative;
+  top: 12px;
+}
+
+header > .actions .show-content > .dropdown-menu {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Authentication Modal */
 .overlay {
   position: fixed;
   display: flex;

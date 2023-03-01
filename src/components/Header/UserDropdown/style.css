@@ -1,54 +1,70 @@
-.user-dropdown-menu {
+.dropdown-menu {
   position: fixed;
   right: 20px;
-  width: 212px;
+  width: 235px;
   background-color: white;
   padding-top: 6px;
   z-index: 1;
 }
 
-.user-dropdown-menu * {
-  font-size: 14px;
-  z-index: 1;
+.guest-dropdown {
+  width: 212px;
 }
 
-.user-dropdown-menu .icon {
+.dropdown-menu *:not(.icon > *) {
+  font-size: 14px;
+}
+
+.user-dropdown .user-option-heading {
+  color: rgb(120, 124, 126);
+}
+
+.user-dropdown .user-option-list {
+  margin-left: 26px;
+  margin-bottom: 25px;
+}
+
+.dropdown-menu .switch-item > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-menu .icon {
   display: flex;
   align-items: center;
   margin-right: 12px;
+  font-size: 20px;
 }
 
-.user-dropdown-item,
-.user-dropdown-menu .dropdown-button {
+.dropdown-item,
+.dropdown-menu .dropdown-button {
   margin: 4px 0;
   padding: 10px 16px;
 }
 
-.user-dropdown-item {
+.dropdown-item > * {
   display: flex;
   align-items: center;
-}
-
-.user-dropdown-menu a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
-.user-dropdown-menu .switch {
-  margin-left: 38px;
-}
-
-.user-dropdown-menu .dropdown-arrow {
+.dropdown-menu .dropdown-arrow {
   margin-right: 10px;
 }
 
-.user-dropdown-menu .dropdown-container a {
+.dropdown-menu .dropdown-container a {
   display: flex;
   height: 40px;
   padding: 0 16px 0 52px;
   align-items: center;
 }
 
-.user-dropdown-menu button:hover {
+.dropdown-menu button:hover {
   cursor: pointer;
+}
+
+.dropdown-menu .footnote {
+  padding: 12px 20px;
+  font-size: 12px;
 }

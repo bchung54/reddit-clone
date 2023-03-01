@@ -1,3 +1,18 @@
+.dropdown-container > button:hover {
+  cursor: pointer;
+}
+
+.dropdown-container.user-container .avatar-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 12px;
+}
+
+.dropdown-container.user-container .avatar-label > .karma-count {
+  color: rgb(168, 170, 171);
+}
+
 .hidden {
   display: none;
 }
@@ -5,9 +20,22 @@
 .dropdown-button {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border: none;
 }
+
+.dropdown-button > .dropdown-label {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-button img {
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+}
+
 .dropdown-text {
   flex: 1;
   text-align: left;

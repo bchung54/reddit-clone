@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import { Button } from 'components/ui/Button';
-import { useRef, useState } from 'react';
 import './style.css';
 
 function Dropdown({
   icon,
   labelText,
+  contentElement,
+  className,
   showContent,
   selfClose,
   onClick,
@@ -35,12 +38,24 @@ function Dropdown({
   if (selfClose) {
     document.addEventListener('mousedown', collapseDropdown);
   }
+
+  // Dropdown closes when current location changes
+  const location = useLocation();
+  useEffect(() => {
+    setIsActive('hidden');
+  }, [location]);
+
   return (
-    <div className="dropdown-container" ref={dropdownRef}>
+    <div className={`dropdown-container ${className}`} ref={dropdownRef}>
       <Button className="dropdown" onClick={onClick || handleClick}>
-        {icon && icon}
-        {labelText !== '' && <span className="dropdown-text">{labelText}</span>}
-        {labelText !== '' &&
+        <div className="dropdown-label">
+          {icon && icon}
+          {contentElement && contentElement}
+          {labelText !== '' && (
+            <span className="dropdown-text">{labelText}</span>
+          )}
+        </div>
+        {(labelText !== '' || contentElement) &&
         (showContent === 'show-content' || isActive === 'show-content') ? (
           <span className="dropdown-arrow">
             <SlArrowUp />
@@ -59,6 +74,8 @@ function Dropdown({
 Dropdown.propTypes = {
   icon: PropTypes.element,
   labelText: PropTypes.string,
+  contentElement: PropTypes.node,
+  className: PropTypes.string,
   showContent: PropTypes.oneOf(['show-content', 'hidden']),
   selfClose: PropTypes.bool,
   onClick: PropTypes.func,
@@ -68,6 +85,8 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
   icon: null,
   labelText: '',
+  contentElement: null,
+  className: '',
   showContent: 'hidden',
   selfClose: false,
   onClick: null,
