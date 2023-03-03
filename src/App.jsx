@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Icon library
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +15,7 @@ import { Settings } from 'pages/Settings';
 
 // Components
 import { Header } from 'components/Header';
-import { GuestSidebar } from 'components/Sidebar';
+import { SidebarContainer } from 'components/Sidebar';
 import { PrivateRoute } from 'components/PrivateRoute';
 // import { Login } from 'components/Login';
 
@@ -36,7 +36,6 @@ import { AnonymousRoute } from 'components/AnonymousRoute';
 library.add(far, fas, fab);
 
 export default function App() {
-  const settingsPage = useLocation().pathname.startsWith('/settings');
   return (
     <div className="App">
       <AuthProvider>
@@ -47,7 +46,7 @@ export default function App() {
               element={
                 <>
                   <Header />
-                  {!settingsPage && <GuestSidebar />}
+                  <SidebarContainer />
                   <Routes>
                     <Route path="/*" element={<Popular />} />
                     <Route path="/r/*">

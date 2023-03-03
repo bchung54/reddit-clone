@@ -16,6 +16,9 @@ function Dropdown({
   children,
 }) {
   const [isActive, setIsActive] = useState(showContent);
+  const dropContainerRef = useRef(null);
+  const dropMenuRef = useRef();
+
   const handleClick = () => {
     if (isActive === 'show-content') {
       setIsActive('hidden');
@@ -25,12 +28,11 @@ function Dropdown({
   };
 
   // Dropdown closes when user clicks outside
-  const dropdownRef = useRef(null);
   const collapseDropdown = (e) => {
     if (
-      dropdownRef.current &&
+      dropContainerRef.current &&
       isActive &&
-      !dropdownRef.current.contains(e.target)
+      !dropContainerRef.current.contains(e.target)
     ) {
       setIsActive('hidden');
     }
@@ -46,7 +48,7 @@ function Dropdown({
   }, [location]);
 
   return (
-    <div className={`dropdown-container ${className}`} ref={dropdownRef}>
+    <div className={`dropdown-container ${className}`} ref={dropContainerRef}>
       <Button className="dropdown" onClick={onClick || handleClick}>
         <div className="dropdown-label">
           {icon && icon}
@@ -66,7 +68,9 @@ function Dropdown({
           </span>
         )}
       </Button>
-      <div className={onClick ? showContent : isActive}>{children}</div>
+      <div className={onClick ? showContent : isActive} ref={dropMenuRef}>
+        {children}
+      </div>
     </div>
   );
 }

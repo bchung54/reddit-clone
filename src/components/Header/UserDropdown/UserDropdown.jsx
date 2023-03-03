@@ -1,7 +1,7 @@
 // libraries
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // components
@@ -19,13 +19,12 @@ import { defaultAvatar } from 'data/defaultAvatars';
 import { CgMoon } from 'react-icons/cg';
 import { SlQuestion } from 'react-icons/sl';
 import { GoMegaphone } from 'react-icons/go';
-import { RxEnter, RxInfoCircled } from 'react-icons/rx';
+import { RxEnter, RxInfoCircled, RxTarget } from 'react-icons/rx';
 import { RiFileList3Line, RiCoinLine } from 'react-icons/ri';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { IoEyeOutline, IoTelescopeOutline } from 'react-icons/io5';
 import { AiOutlineTrademarkCircle } from 'react-icons/ai';
 import { GrShield } from 'react-icons/gr';
-import { FaRegDotCircle } from 'react-icons/fa';
 
 // styles
 import './style.css';
@@ -50,6 +49,7 @@ export default function UserDropdown() {
   ];
   const [error, setError] = useState();
   const { currentUser, logout } = useAuth();
+  const userMenuRef = useRef();
   const navigate = useNavigate();
   const handleLogOut = async () => {
     setError();
@@ -61,6 +61,7 @@ export default function UserDropdown() {
       setError('Failed to log out');
     }
   };
+
   if (!currentUser) {
     return (
       <Dropdown
@@ -69,7 +70,11 @@ export default function UserDropdown() {
         selfClose
       >
         <div className="guest-dropdown dropdown-menu">
-          <DropdownItem icon={<CgMoon />} text="Dark Mode">
+          <DropdownItem
+            icon={<CgMoon />}
+            text="Dark Mode"
+            className="switch-item"
+          >
             <Switch name="dark-mode" />
           </DropdownItem>
           <DropdownItem icon={<SlQuestion />} text="Help Center" link="#0" />
@@ -117,7 +122,7 @@ export default function UserDropdown() {
       className="user-container"
       selfClose
     >
-      <div className="user-dropdown dropdown-menu">
+      <div className="user-dropdown dropdown-menu" ref={userMenuRef}>
         <DropdownItem
           icon={<HiOutlineUserCircle />}
           text="My Stuff"
@@ -153,7 +158,7 @@ export default function UserDropdown() {
         />
         <DropdownItem icon={<RiCoinLine />} text="Coins" link="#0" />
         <DropdownItem icon={<GrShield />} text="Premium" link="#0" />
-        <DropdownItem icon={<FaRegDotCircle />} text="Talk" link="#0" />
+        <DropdownItem icon={<RxTarget />} text="Talk" link="#0" />
         <DropdownItem icon={<IoTelescopeOutline />} text="Explore" />
         <DropdownItem icon={<SlQuestion />} text="Help Center" link="#0" />
         <Dropdown icon={<RxInfoCircled className="icon" />} labelText="More">
@@ -193,10 +198,10 @@ export default function UserDropdown() {
 
 function DropdownItem({ icon, text, onClick, link, className, children }) {
   const contentElement = (
-    <>
+    <div className="dropdown-label">
       {icon && <span className="icon">{icon}</span>}
       <span>{text}</span>
-    </>
+    </div>
   );
   return (
     <div className={`dropdown-item ${className}`}>

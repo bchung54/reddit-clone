@@ -49,8 +49,8 @@
   text-decoration: none;
 }
 
-.dropdown-menu .dropdown-arrow {
-  margin-right: 10px;
+.dropdown-item .dropdown-label {
+  display: flex;
 }
 
 .dropdown-menu .dropdown-container a {
@@ -58,10 +58,6 @@
   height: 40px;
   padding: 0 16px 0 52px;
   align-items: center;
-}
-
-.dropdown-menu button:hover {
-  cursor: pointer;
 }
 
 .dropdown-menu .footnote {
