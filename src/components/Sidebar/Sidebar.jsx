@@ -1,39 +1,57 @@
 // libraries
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import {
+  BsBarChartLine,
   BsHouseDoor,
   BsArrowUpRightCircleFill,
   BsPlusLg,
 } from 'react-icons/bs';
-import { CiStar } from 'react-icons/ci';
 import { VscBell } from 'react-icons/vsc';
 import { GiCrystalBall, GiRainbowStar } from 'react-icons/gi';
 import { GrShield } from 'react-icons/gr';
-import { IoShirtOutline } from 'react-icons/io5';
+import { IoChatbubblesOutline, IoShirtOutline } from 'react-icons/io5';
 import { RxTarget } from 'react-icons/rx';
+import { RiCoinLine } from 'react-icons/ri';
 
 // components
-/* import { Button } from 'components/ui/Button';
- */ import { useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import { subredditList } from 'data/subredditList';
 import { defaultAvatar } from 'data/defaultAvatars';
-import { RiCoinLine } from 'react-icons/ri';
+import { FavoriteStar } from 'components/ui/FavoriteStar';
 import { Accordian } from './Accordian';
 import { Imprint } from './Imprint';
 
 // styles
 import './style.css';
 
-export function SidebarContainer() {
-  const settingsPage = useLocation().pathname.startsWith('/settings');
-  const { currentUser } = useAuth();
-  if (currentUser) {
-    return <UserSidebar />;
-  }
-  return !settingsPage && <GuestSidebar />;
+export function SidebarContainer({ name, children }) {
+  return <div className={`${name}-sidebar`}>{children}</div>;
 }
 
-export function GuestSidebar() {
+SidebarContainer.propTypes = {
+  name: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export function MainSidebar() {
+  const settingsPage = useLocation().pathname.startsWith('/settings');
+  const { currentUser } = useAuth();
+  if (!settingsPage) {
+    return currentUser ? <UserSidebar /> : <GuestSidebar />;
+  }
+}
+
+export function ContentSidebar() {
+  return (
+    <div className="content-sidebar">
+      <Accordian heading="popular" />
+      <Imprint />
+    </div>
+  );
+}
+
+function GuestSidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-menu">
@@ -65,34 +83,29 @@ export function GuestSidebar() {
   );
 }
 
-export function ContentSidebar() {
-  return (
-    <div className="content-sidebar">
-      <Accordian heading="popular" />
-      <Imprint />
-    </div>
-  );
-}
-
-export function UserSidebar() {
+function UserSidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-menu">
         <h4>Custom Feeds</h4>
         <h4>Your Communities</h4>
-        {subredditList.map((sub) => {
-          return (
-            <Link className="sub-link" to={`/r/${sub.name}`} key={sub.name}>
-              <div className="sub-link-label">
-                <span className="icon">
-                  <img src={sub.icon} alt="sub-icon" />
-                </span>
-                <span className="text">{`r/${sub.name}`}</span>
+        {subredditList
+          .sort((a, b) => {
+            return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
+          })
+          .map((sub) => {
+            return (
+              <div className="sub-link-item" key={sub.name}>
+                <Link className="sub-link" to={`/r/${sub.name}`}>
+                  <span className="icon">
+                    <img src={sub.icon} alt="sub-icon" />
+                  </span>
+                  <span className="text">{`r/${sub.name}`}</span>
+                </Link>
+                <FavoriteStar />
               </div>
-              <CiStar className="star" />
-            </Link>
-          );
-        })}
+            );
+          })}
         <h4>Feeds</h4>
         <Link className="feed-link" to="/r/home/">
           <span className="icon">
@@ -105,6 +118,18 @@ export function UserSidebar() {
             <BsArrowUpRightCircleFill />
           </span>
           <span className="feed-text">Popular</span>
+        </Link>
+        <Link className="feed-link" to="/">
+          <span className="icon">
+            <BsBarChartLine />
+          </span>
+          <span className="feed-text">All</span>
+        </Link>
+        <Link className="feed-link" to="#0">
+          <span className="icon">
+            <IoChatbubblesOutline />
+          </span>
+          <span className="feed-text">Happening Now</span>
         </Link>
         <h4>Other</h4>
         <Link className="other-link" to="/settings/">

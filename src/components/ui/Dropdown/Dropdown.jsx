@@ -17,7 +17,7 @@ function Dropdown({
 }) {
   const [isActive, setIsActive] = useState(showContent);
   const dropContainerRef = useRef(null);
-  const dropMenuRef = useRef();
+  const dropMenuRef = useRef(null);
 
   const handleClick = () => {
     if (isActive === 'show-content') {
@@ -46,7 +46,6 @@ function Dropdown({
   useEffect(() => {
     setIsActive('hidden');
   }, [location]);
-
   return (
     <div className={`dropdown-container ${className}`} ref={dropContainerRef}>
       <Button className="dropdown" onClick={onClick || handleClick}>

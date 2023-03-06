@@ -19,7 +19,10 @@ export default function FlairsWidget() {
             return (
               <span
                 key={flair.text}
-                style={{ backgroundColor: `${flair.color}` }}
+                style={{
+                  backgroundColor: `${flair.color}`,
+                  color: `${flair.textColor}`,
+                }}
               >
                 {flair.text}
               </span>

@@ -29,7 +29,7 @@ import { GrShield } from 'react-icons/gr';
 // styles
 import './style.css';
 
-export default function UserDropdown() {
+export default function UserDropdown({ showOverlay }) {
   const moreInfoList = [
     'Reddit iOS',
     'Reddit Android',
@@ -104,7 +104,11 @@ export default function UserDropdown() {
             text="Advertise on Reddit"
             link="#0"
           />
-          <DropdownItem icon={<RxEnter />} text="Log In / Sign Up" />
+          <DropdownItem
+            icon={<RxEnter />}
+            text="Log In / Sign Up"
+            onClick={showOverlay}
+          />
           {error && <div>{error}</div>}
         </div>
       </Dropdown>
@@ -159,7 +163,7 @@ export default function UserDropdown() {
         <DropdownItem icon={<RiCoinLine />} text="Coins" link="#0" />
         <DropdownItem icon={<GrShield />} text="Premium" link="#0" />
         <DropdownItem icon={<RxTarget />} text="Talk" link="#0" />
-        <DropdownItem icon={<IoTelescopeOutline />} text="Explore" />
+        <DropdownItem icon={<IoTelescopeOutline />} text="Explore" link="#0" />
         <DropdownItem icon={<SlQuestion />} text="Help Center" link="#0" />
         <Dropdown icon={<RxInfoCircled className="icon" />} labelText="More">
           {moreInfoList.map((item) => {
@@ -196,6 +200,10 @@ export default function UserDropdown() {
   );
 }
 
+UserDropdown.propTypes = {
+  showOverlay: PropTypes.func.isRequired,
+};
+
 function DropdownItem({ icon, text, onClick, link, className, children }) {
   const contentElement = (
     <div className="dropdown-label">
@@ -206,7 +214,11 @@ function DropdownItem({ icon, text, onClick, link, className, children }) {
   return (
     <div className={`dropdown-item ${className}`}>
       {link && <Link to={link}>{contentElement}</Link>}
-      {onClick && <Button onClick={onClick}>{contentElement}</Button>}
+      {onClick && (
+        <Button onClick={onClick} className="dropdown">
+          {contentElement}
+        </Button>
+      )}
       {!onClick && !link && (
         <div>
           {contentElement}

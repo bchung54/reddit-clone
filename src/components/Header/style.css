@@ -50,13 +50,21 @@ header > .actions > .user-container {
 }
 
 /* User Dropdown */
-header > .actions .show-content {
+header > .actions > .user-container > .show-content {
   position: relative;
   top: 12px;
 }
 
 header > .actions .show-content > .dropdown-menu {
   max-height: 85vh;
+}
+
+header > .dropdown-container button {
+  background-color: transparent;
+}
+
+header > .dropdown-container button:hover {
+  cursor: pointer;
 }
 
 /* Authentication Modal */

@@ -15,7 +15,7 @@ import { Settings } from 'pages/Settings';
 
 // Components
 import { Header } from 'components/Header';
-import { SidebarContainer } from 'components/Sidebar';
+import { MainSidebar } from 'components/Sidebar';
 import { PrivateRoute } from 'components/PrivateRoute';
 // import { Login } from 'components/Login';
 
@@ -46,7 +46,7 @@ export default function App() {
               element={
                 <>
                   <Header />
-                  <SidebarContainer />
+                  <MainSidebar />
                   <Routes>
                     <Route path="/*" element={<Popular />} />
                     <Route path="/r/*">

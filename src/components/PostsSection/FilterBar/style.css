@@ -28,7 +28,7 @@
 }
 
 .filter-button.active {
-  color: blue;
+  color: var(--reddit-blue);
 }
 
 .filter-button:hover {
@@ -37,7 +37,7 @@
 
 .filter-button:focus {
   background-color: rgba(128, 128, 128, 0.589);
-  color: blue;
+  color: var(--reddit-blue);
 }
 
 .layout-dropdown {

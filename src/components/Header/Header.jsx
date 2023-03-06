@@ -14,7 +14,11 @@ export default function Header() {
   const { currentUser } = useAuth();
   const [overlay, setOverlay] = useState();
   const renderOverlay = (buttonValue) => {
-    setOverlay(buttonValue);
+    if (buttonValue) {
+      setOverlay(buttonValue);
+    } else {
+      setOverlay('login');
+    }
   };
   const handleClose = () => {
     setOverlay(null);
@@ -30,7 +34,7 @@ export default function Header() {
         </div>
         <div className="actions">
           {!currentUser && <HeaderButtons showOverlay={renderOverlay} />}
-          <UserDropdown />
+          <UserDropdown showOverlay={renderOverlay} />
         </div>
       </header>
       {overlay && (

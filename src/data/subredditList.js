@@ -15,17 +15,17 @@ export const subredditList = [
     subscribers: '17.9m',
     online: '11.0k',
     flairs: [
-      { text: 'meta', color: '#edeff1' },
-      { text: 'Society', color: '#edeff1' },
-      { text: 'Medicine', color: '#dadada' },
-      { text: 'Discussion', color: '#edeff1' },
-      { text: 'Environment', color: '#edeff1' },
-      { text: '3Dprint', color: '#edeff1' },
-      { text: 'Biotech', color: '#edeff1' },
-      { text: 'Computing', color: '#edeff1' },
-      { text: 'Space', color: '#edeff1' },
-      { text: 'Energy', color: '#edeff1' },
-      { text: 'AI', color: '#edeff1' },
+      { text: 'meta', color: '#edeff1', textColor: 'black' },
+      { text: 'Society', color: '#edeff1', textColor: 'black' },
+      { text: 'Medicine', color: '#dadada', textColor: 'black' },
+      { text: 'Discussion', color: '#edeff1', textColor: 'black' },
+      { text: 'Environment', color: '#edeff1', textColor: 'black' },
+      { text: '3Dprint', color: '#edeff1', textColor: 'black' },
+      { text: 'Biotech', color: '#edeff1', textColor: 'black' },
+      { text: 'Computing', color: '#edeff1', textColor: 'black' },
+      { text: 'Space', color: '#edeff1', textColor: 'black' },
+      { text: 'Energy', color: '#edeff1', textColor: 'black' },
+      { text: 'AI', color: '#edeff1', textColor: 'black' },
     ],
     rules: [
       {
@@ -252,7 +252,9 @@ export const subredditList = [
     dateCreated: 'Jan 25, 2008',
     subscribers: '46.9m',
     online: '21.1k',
-    flairs: [{ text: 'Verified', color: 'rgb(237,239,241)' }],
+    flairs: [
+      { text: 'Verified', color: 'rgb(237,239,241)', textColor: 'black' },
+    ],
     rules: [
       {
         heading: 'All posts must make an attempt at humor.',
@@ -519,10 +521,12 @@ export const subredditList = [
       {
         text: 'Russia/Ukraine',
         color: 'rgb(237, 239, 241)',
+        textColor: 'black',
       },
       {
         text: 'Behind Soft Paywall',
         color: 'rgb(237, 239, 241)',
+        textColor: 'black',
       },
     ],
     rules: [

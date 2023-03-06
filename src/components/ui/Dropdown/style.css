@@ -1,7 +1,3 @@
-.dropdown-container > button:hover {
-  cursor: pointer;
-}
-
 .dropdown-container.user-container .avatar-label {
   display: flex;
   flex-direction: column;

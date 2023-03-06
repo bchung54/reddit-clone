@@ -1,3 +1,7 @@
+:root {
+  --reddit-blue: rgb(0, 121, 211);
+}
+
 #root {
   height: 100vh;
 }
