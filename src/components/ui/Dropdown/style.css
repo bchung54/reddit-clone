@@ -1,14 +1,3 @@
-.dropdown-container.user-container .avatar-label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 12px;
-}
-
-.dropdown-container.user-container .avatar-label > .karma-count {
-  color: rgb(168, 170, 171);
-}
-
 .hidden {
   display: none;
 }

@@ -1,13 +1,22 @@
 import { useState } from 'react';
+
+// components
 import { SignUp } from 'components/SignUp';
 import { LogIn } from 'components/LogIn';
-import { useAuth } from 'contexts/AuthContext';
-import logoImg from 'assets/images/reddit_logo_new.svg';
 import { RecoverUsername } from 'components/RecoverUsername';
 import { ResetPassword } from 'components/ResetPassword';
-import { SearchBar } from './SearchBar';
-import { HeaderButtons } from './HeaderButtons';
-import { UserDropdown } from './UserDropdown';
+
+import { SearchBar } from 'components/Header/SearchBar';
+import { HeaderButtons } from 'components/Header/HeaderButtons';
+import { UserDropdown } from 'components/Header/UserDropdown';
+
+// contexts
+import { useAuth } from 'contexts/AuthContext';
+
+// images
+import logoImg from 'assets/images/reddit_logo_new.svg';
+
+// styles
 import './style.css';
 
 export default function Header() {
