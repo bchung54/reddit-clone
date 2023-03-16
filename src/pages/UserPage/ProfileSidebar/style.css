@@ -1,0 +1,183 @@
+.profile-sidebar {
+  /* Same as widget sidebar, TODO: consolidate */
+  display: flex;
+  flex-direction: column;
+  width: 312px;
+  margin-left: 24px;
+  font-size: 14px;
+  gap: 16px;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.profile.widget {
+  position: relative;
+  width: 286px;
+  padding: 12px;
+}
+
+.profile.widget > *:not(.avatar, .option) {
+  align-self: center;
+}
+
+.profile.widget > button,
+.profile.widget > div:not(.avatar-banner, .avatar) {
+  margin-top: 10px;
+}
+
+.profile.widget button:hover {
+  cursor: pointer;
+}
+
+.profile.widget > button {
+  border: none;
+  border-radius: 999px;
+  padding: 4px 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile.widget > .create-avatar,
+.profile.widget > .follow {
+  width: 100%;
+  color: white;
+}
+
+.profile.widget a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.profile.widget > .option {
+  color: var(--reddit-blue);
+}
+
+.profile.widget > .option:hover {
+  background-color: rgba(124, 124, 124, 0.15);
+}
+.profile.widget > .option:focus {
+  background-color: rgba(128, 128, 128, 0.45);
+}
+
+.profile.widget > .avatar-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 94px;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background-color: rgb(51, 168, 255);
+}
+
+.profile.widget > .avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82px;
+  width: 82px;
+  margin-left: -3px;
+  margin-top: 16px;
+  border-radius: 6px;
+  padding: 3px;
+  background-color: white;
+}
+
+.profile.widget > .avatar > img {
+  height: 80px;
+  width: 80px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.profile-sidebar > .profile.widget > h1 {
+  margin: 4px 0;
+  font-size: 22px;
+}
+
+.profile-sidebar > .profile.widget > .user-link {
+  color: rgb(124, 124, 124);
+  font-size: 12px;
+}
+
+.profile.widget > .create-avatar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(90deg, #ec0623, #ff8717);
+}
+
+.profile.widget > .stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile.widget > .stats > * {
+  width: 143px;
+}
+
+.profile.widget > .stats h5 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile.widget > .stats .info {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.profile.widget > .stats .icon {
+  margin-right: 4px;
+  color: var(--reddit-blue);
+  vertical-align: text-top;
+}
+
+.profile.widget > .follow {
+  background-color: var(--reddit-blue);
+}
+
+.profile.widget > .option.expand {
+  align-self: flex-end;
+}
+
+.profile.widget > .option:not(.expand) {
+  align-self: flex-start;
+}
+
+.trophy-case.widget > * {
+  margin: 0;
+  padding: 12px;
+  font-size: 14px;
+}
+/* 
+.trophy-case.widget > h2 {
+  
+} */
+
+.trophy-case.widget .trophy {
+  display: flex;
+  align-items: center;
+  height: 41px;
+}
+
+.trophy-case.widget .trophy:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+.trophy-case.widget .trophy > img {
+  height: 41px;
+  width: 41px;
+  margin-right: 8px;
+}
+
+.trophy-case.widget .trophy > h5 {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-weight: 500;
+}

@@ -79,5 +79,5 @@
 }
 
 .subreddit-heading .navbar .active {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--subreddit-color);
 }

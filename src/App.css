@@ -4,6 +4,7 @@
 
 #root {
   height: 100vh;
+  font-family: IBMPlexSans, Arial, sans-serif;
 }
 
 .App,
@@ -15,7 +16,7 @@ main {
   justify-content: center;
   min-height: calc(100vh - 48px);
   padding-left: 270px;
-  background-color: rgb(195, 203, 212);
+  background-color: #dae0e6;
 }
 
 .main-content {

@@ -1,0 +1,23 @@
+main.user > .header {
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--reddit-blue);
+  padding-left: 24px;
+  padding-right: 358px;
+  background-color: white;
+}
+
+main.user > .header > a {
+  margin-right: 10px;
+  border-bottom-style: none;
+  padding: 0 8px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+main.user > .header > a.active {
+  color: var(--reddit-blue);
+  border-bottom-style: solid;
+}

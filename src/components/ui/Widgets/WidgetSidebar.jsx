@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { SidebarContainer } from 'components/Sidebar';
+import { Imprint } from 'components/Sidebar/Imprint';
 import { AboutWidget } from './AboutWidget';
 import { FlairsWidget } from './FlairsWidget';
 import { RulesWidget } from './RulesWidget';
@@ -18,6 +19,7 @@ export default function WidgetSidebar({ post }) {
           <RulesWidget />
         </>
       )}
+      <Imprint />
     </SidebarContainer>
   );
 }

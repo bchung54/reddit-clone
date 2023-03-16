@@ -2,17 +2,23 @@ import { useSubreddit } from 'contexts/SubredditContext';
 import { useEffect, useState } from 'react';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import { SlClose } from 'react-icons/sl';
+import { useLocation } from 'react-router-dom';
 import './style.css';
 
 export default function SearchBar() {
   const subreddit = useSubreddit();
   const [filter, setFilter] = useState(subreddit);
+  const location = useLocation();
   const handleCloseFilter = () => {
     setFilter(null);
   };
   useEffect(() => {
-    setFilter(subreddit);
-  }, [subreddit]);
+    if (location.pathname.includes('/r/')) {
+      setFilter(subreddit);
+    } else {
+      handleCloseFilter();
+    }
+  }, [subreddit, location]);
   return (
     <div className="search-bar">
       <form autoComplete="off">

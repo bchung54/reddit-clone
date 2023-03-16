@@ -136,7 +136,10 @@ export default function UserDropdown({ showOverlay }) {
           <DropdownItem text="Online Status" className="switch-item">
             <Switch name="online-status" />
           </DropdownItem>
-          <DropdownItem text="Profile" link="#0" />
+          <DropdownItem
+            text="Profile"
+            link={`/user/${currentUser.displayName}/`}
+          />
           <DropdownItem text="Create Avatar" link="#0" />
           <DropdownItem text="User Settings" link="/settings/" />
         </div>

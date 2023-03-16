@@ -11,13 +11,19 @@ import { Home } from 'pages/Home';
 import { Popular } from 'pages/Popular';
 import { SubredditPage } from 'pages/Subreddit';
 import { PostThread } from 'pages/PostThread';
+import { UserPage } from 'pages/UserPage';
+import { AccountPage } from 'pages/AccountPage';
 import { Settings } from 'pages/Settings';
 
 // Components
 import { Header } from 'components/Header';
 import { MainSidebar } from 'components/Sidebar';
+import { SignUp } from 'components/SignUp';
+import { LogIn } from 'components/LogIn';
+import { RecoverUsername } from 'components/RecoverUsername';
+import { ResetPassword } from 'components/ResetPassword';
 import { PrivateRoute } from 'components/PrivateRoute';
-// import { Login } from 'components/Login';
+import { AnonymousRoute } from 'components/AnonymousRoute';
 
 // Contexts
 import { AuthProvider } from 'contexts/AuthContext';
@@ -25,12 +31,6 @@ import { SubredditProvider } from 'contexts/SubredditContext';
 
 // Styles
 import './App.css';
-import { AccountPage } from 'pages/AccountPage';
-import { SignUp } from 'components/SignUp';
-import { LogIn } from 'components/LogIn';
-import { RecoverUsername } from 'components/RecoverUsername';
-import ResetPassword from 'components/ResetPassword/ResetPassword';
-import { AnonymousRoute } from 'components/AnonymousRoute';
 
 // This exports the whole icon packs for Brand and Solid.
 library.add(far, fas, fab);
@@ -62,6 +62,7 @@ export default function App() {
                         />
                       </Route>
                     </Route>
+                    <Route path="/user/:userName/*" element={<UserPage />} />
                     <Route
                       path="/settings/"
                       element={<PrivateRoute element={<Settings />} />}

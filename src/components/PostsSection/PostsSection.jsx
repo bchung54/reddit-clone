@@ -1,6 +1,7 @@
 // libraries
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 // functions
 import orderPosts from 'utils/orderPosts';
@@ -12,26 +13,21 @@ import { PostsList } from './PostsList';
 // styles
 import './style.css';
 
-export default function PostsSection({ root, postList }) {
-  const sortByList = ['hot', 'new', 'top', 'rising'];
+export default function PostsSection({ root, postList, sortByList }) {
   const orderedPosts = sortByList.map((filter) => orderPosts(postList, filter));
   const [activeIndex, setActiveIndex] = useState(0);
-  const updateSortBy = (newSortBy) => {
-    setActiveIndex(newSortBy);
-  };
+  const [searchParams] = useSearchParams();
+  const sortBy = searchParams.get('sort');
+  useEffect(() => {
+    const newIndex = sortByList.findIndex((elem) => elem === sortBy);
+    setActiveIndex(newIndex === -1 ? 0 : newIndex);
+  }, [searchParams]);
   return (
     <div className="posts-section">
       {(root === '/r/popular/' || root === '/') && (
         <div className="main-heading">Popular posts</div>
       )}
-      {root !== '/r/home/' && (
-        <FilterBar
-          root={root}
-          sortByList={sortByList}
-          activeIndex={activeIndex}
-          updatePostsSection={updateSortBy}
-        />
-      )}
+      {root !== '/r/home/' && <FilterBar sortByList={sortByList} />}
       <PostsList orderedPosts={orderedPosts[activeIndex]} />
     </div>
   );
@@ -53,8 +49,10 @@ PostsSection.propTypes = {
       commentCount: PropTypes.number,
     })
   ).isRequired,
+  sortByList: PropTypes.arrayOf(PropTypes.string),
 };
 
 PostsSection.defaultProps = {
   root: '/',
+  sortByList: ['hot', 'new', 'top', 'rising'],
 };

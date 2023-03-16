@@ -96,7 +96,7 @@ function UserSidebar() {
           .map((sub) => {
             return (
               <div className="sub-link-item" key={sub.name}>
-                <Link className="sub-link" to={`/r/${sub.name}`}>
+                <Link className="sub-link" to={`/r/${sub.name}/`}>
                   <span className="icon">
                     <img src={sub.icon} alt="sub-icon" />
                   </span>

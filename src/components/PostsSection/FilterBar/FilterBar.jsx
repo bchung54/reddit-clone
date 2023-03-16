@@ -1,47 +1,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.css';
 
-export default function FilterBar({
-  root,
-  sortByList,
-  activeIndex,
-  updatePostsSection,
-}) {
+export default function FilterBar({ sortByList }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get('sort');
   return (
     <div className="filter-bar">
       <div className="filters">
-        {sortByList.map((filter, index) => {
-          let icon;
-          switch (filter) {
-            case 'hot':
-              icon = ['fas', 'fa-fire-flame-simple'];
-              break;
-            case 'new':
-              icon = ['far', 'fa-sun'];
-              break;
-            case 'top':
-              icon = ['fas', 'fa-ranking-star'];
-              break;
-            case 'rising':
-              icon = ['fas', 'fa-arrow-trend-up'];
-              break;
-            default:
-          }
+        {sortByList.map((filter) => {
           return (
             <Link
-              className={
-                index === activeIndex ? 'filter-button active' : 'filter-button'
-              }
-              to={`${root}${filter}/`}
+              className={`filter-button ${sortBy === filter ? 'active' : ''}`}
+              to={`?sort=${filter}`}
               onClick={() => {
-                updatePostsSection(index);
+                setSearchParams({ sort: filter });
               }}
               key={filter}
             >
-              <FontAwesomeIcon icon={icon} className="icon" />
+              <FontAwesomeIcon
+                icon={
+                  {
+                    hot: ['fas', 'fa-fire-flame-simple'],
+                    new: ['far', 'fa-sun'],
+                    top: ['fas', 'fa-ranking-star'],
+                    rising: ['fas', 'fa-arrow-trend-up'],
+                  }[filter]
+                }
+                className="icon"
+              />
               <span>{filter[0].toUpperCase() + filter.slice(1)}</span>
             </Link>
           );
@@ -56,8 +45,5 @@ export default function FilterBar({
 }
 
 FilterBar.propTypes = {
-  root: PropTypes.string.isRequired,
   sortByList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeIndex: PropTypes.number.isRequired,
-  updatePostsSection: PropTypes.func.isRequired,
 };
