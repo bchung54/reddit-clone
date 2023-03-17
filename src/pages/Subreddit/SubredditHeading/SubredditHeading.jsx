@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'components/ui/Button';
 import { useSubreddit } from 'contexts/SubredditContext';
-import NavBarLinks from './NavBarLinks';
+import { NavBarLinks } from 'components/NavBarLinks';
 import './style.css';
 
 export default function SubredditHeading() {

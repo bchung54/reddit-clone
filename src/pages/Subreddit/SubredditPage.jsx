@@ -15,7 +15,7 @@ export default function SubredditPage() {
   useEffect(() => {
     setSubreddit(subreddit);
     const root = document.querySelector(':root');
-    root.style.setProperty('--subreddit-color', subreddit.color);
+    root.style.setProperty('--navbar-color', subreddit.color);
   }, [subredditName]);
   const posts = defaultPosts.filter((post) => post.subreddit === subredditName);
   return (

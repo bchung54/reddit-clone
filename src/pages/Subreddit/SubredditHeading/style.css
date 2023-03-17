@@ -69,15 +69,3 @@
   font-size: 14px;
   font-weight: 500;
 }
-
-.subreddit-heading .navbar a {
-  margin: 0 5px;
-  padding: 4px 8px;
-  color: inherit;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.subreddit-heading .navbar .active {
-  border-bottom: 3px solid var(--subreddit-color);
-}
