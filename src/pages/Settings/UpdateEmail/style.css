@@ -1,0 +1,4 @@
+.update-email label {
+  display: flex;
+  flex-direction: column;
+}

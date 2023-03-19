@@ -63,3 +63,17 @@
 .setting > button:hover {
   cursor: pointer;
 }
+
+.setting .delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  color: #ff585b;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.setting .icon {
+  font-size: 20px;
+}

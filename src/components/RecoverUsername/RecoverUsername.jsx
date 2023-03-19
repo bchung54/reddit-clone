@@ -1,13 +1,14 @@
-import SnooIcon from 'assets/images/snoo-icon.png';
 import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useOverlay } from 'contexts/OverlayContext';
 import { Button } from 'components/ui/Button';
+import SnooIcon from 'assets/images/snoo-icon.png';
 
-function RecoverUsername({ onClose, switchOverlay }) {
+function RecoverUsername() {
+  const { setOverlay } = useOverlay();
+  // const [loading, setLoading] = useState();
   const page = useLocation().pathname === '/account/username';
-  /*   const [loading, setLoading] = useState();
-   */ const handleSwitch = (e) => {
-    switchOverlay(e.target.value);
+  const handleSwitch = (e) => {
+    setOverlay(e.target.value);
   };
   return (
     <div className="recover-username auth-card">
@@ -47,22 +48,17 @@ function RecoverUsername({ onClose, switchOverlay }) {
         )}
       </div>
       {!page && (
-        <Button className="close" onClick={onClose}>
+        <Button
+          className="close"
+          onClick={() => {
+            setOverlay(null);
+          }}
+        >
           X
         </Button>
       )}
     </div>
   );
 }
-
-RecoverUsername.propTypes = {
-  onClose: PropTypes.func,
-  switchOverlay: PropTypes.func,
-};
-
-RecoverUsername.defaultProps = {
-  onClose: null,
-  switchOverlay: null,
-};
 
 export default RecoverUsername;

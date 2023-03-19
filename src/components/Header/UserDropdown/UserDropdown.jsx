@@ -11,6 +11,7 @@ import { Button } from 'components/ui/Button';
 
 // contexts
 import { useAuth } from 'contexts/AuthContext';
+import { useOverlay } from 'contexts/OverlayContext';
 
 // data
 import { defaultAvatar } from 'data/defaultAvatars';
@@ -29,7 +30,7 @@ import { GrShield } from 'react-icons/gr';
 // styles
 import './style.css';
 
-export default function UserDropdown({ showOverlay }) {
+export default function UserDropdown() {
   const moreInfoList = [
     'Reddit iOS',
     'Reddit Android',
@@ -49,6 +50,7 @@ export default function UserDropdown({ showOverlay }) {
   ];
   const [error, setError] = useState();
   const { currentUser, logout } = useAuth();
+  const { setOverlay } = useOverlay();
   const userMenuRef = useRef();
   const navigate = useNavigate();
   const handleLogOut = async () => {
@@ -56,6 +58,7 @@ export default function UserDropdown({ showOverlay }) {
 
     try {
       await logout();
+      navigate('/');
       navigate(0);
     } catch {
       setError('Failed to log out');
@@ -107,7 +110,9 @@ export default function UserDropdown({ showOverlay }) {
           <DropdownItem
             icon={<RxEnter />}
             text="Log In / Sign Up"
-            onClick={showOverlay}
+            onClick={() => {
+              setOverlay('login');
+            }}
           />
           {error && <div>{error}</div>}
         </div>
@@ -202,10 +207,6 @@ export default function UserDropdown({ showOverlay }) {
     </Dropdown>
   );
 }
-
-UserDropdown.propTypes = {
-  showOverlay: PropTypes.func.isRequired,
-};
 
 function DropdownItem({ icon, text, onClick, link, className, children }) {
   const contentElement = (

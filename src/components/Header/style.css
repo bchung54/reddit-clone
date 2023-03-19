@@ -84,6 +84,10 @@ header .dropdown-container button:hover {
   z-index: 5;
 }
 
+.overlay.update {
+  top: 48px;
+}
+
 .overlay input {
   border-radius: 40px;
 }

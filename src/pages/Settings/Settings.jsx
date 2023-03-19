@@ -1,11 +1,14 @@
-import { useRef, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
+import { useOverlay } from 'contexts/OverlayContext';
 import { NavBarLinks } from 'components/NavBarLinks';
-import './style.css';
 import { Switch } from 'components/ui/Switch';
+import { FaTrashAlt } from 'react-icons/fa';
+import './style.css';
 
 export default function Settings() {
   const { currentUser } = useAuth();
+  const { setOverlay } = useOverlay();
+
   return (
     <div className="settings">
       <div className="header">
@@ -31,14 +34,28 @@ export default function Settings() {
             <h3>Email address</h3>
             <p>{currentUser.email}</p>
           </div>
-          <button type="button">Change</button>
+          <button
+            type="button"
+            onClick={() => {
+              setOverlay('updateEmail');
+            }}
+          >
+            Change
+          </button>
         </div>
         <div className="setting">
           <div className="setting-text">
             <h3>Change password</h3>
             <p>Password must be at least 6 characters long</p>
           </div>
-          <button type="button">Change</button>
+          <button
+            type="button"
+            onClick={() => {
+              setOverlay('updatePassword');
+            }}
+          >
+            Change
+          </button>
         </div>
         <h3>Beta tests</h3>
         <div className="setting">
@@ -58,14 +75,19 @@ export default function Settings() {
           <Switch name="beta" />
         </div>
         <h3>Delete account</h3>
+        <div className="setting">
+          <div />
+          <button className="delete-btn" title="pls dont" type="button">
+            <FaTrashAlt className="icon" />
+            <span id="delete">Delete Account</span>
+          </button>
+        </div>
       </div>
-      <UpdateEmailForm />
-      <UpdatePasswordForm />
     </div>
   );
 }
 
-function UpdateEmailForm() {
+/* function UpdateEmailForm() {
   const emailRef = useRef();
   const currPasswordRef = useRef();
   const { currentUser, updateEmailHook, reauthenticate } = useAuth();
@@ -97,6 +119,11 @@ function UpdateEmailForm() {
   }
   return (
     <form className="update-email" onSubmit={handleUpdateEmail}>
+      <h2>Update your email</h2>
+      <p>
+        Update your email below. There will be a new verification email sentt
+        that you will need to use to verify this new email.
+      </p>
       {error && <div className="error">{error}</div>}
       {message && <div className="message">{message}</div>}
       <label htmlFor="current-password">
@@ -114,7 +141,7 @@ function UpdateEmailForm() {
         />
       </label>
       <button type="submit" disabled={loading}>
-        save
+        Save email
       </button>
     </form>
   );
@@ -177,3 +204,4 @@ function UpdatePasswordForm() {
     </form>
   );
 }
+ */

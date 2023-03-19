@@ -1,19 +1,27 @@
-import { Button } from 'components/ui/Button';
-import { useAuth } from 'contexts/AuthContext';
 import { useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-// import './style.css';
+import { useAuth } from 'contexts/AuthContext';
+import { useOverlay } from 'contexts/OverlayContext';
+import { Button } from 'components/ui/Button';
 
-function SignUp({ onClose, switchOverlay }) {
+function SignUp() {
+  // contexts
+  const { signup, updateUsername } = useAuth();
+  const { setOverlay } = useOverlay();
+
+  // navigation
   const navigate = useNavigate();
+  const page = useLocation().pathname === '/account/signup';
+
+  // references
   const emailRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
-  const { signup, updateUsername } = useAuth();
+
+  // states
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  const page = useLocation().pathname === '/account/signup';
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -41,7 +49,7 @@ function SignUp({ onClose, switchOverlay }) {
     return setLoading(false);
   }
   const handleSwitch = (e) => {
-    switchOverlay(e.target.value);
+    setOverlay(e.target.value);
   };
   return (
     <div className="sign-up auth-card">
@@ -83,22 +91,17 @@ function SignUp({ onClose, switchOverlay }) {
         )}
       </div>
       {!page && (
-        <Button className="close" onClick={onClose}>
+        <Button
+          className="close"
+          onClick={() => {
+            setOverlay(null);
+          }}
+        >
           X
         </Button>
       )}
     </div>
   );
 }
-
-SignUp.propTypes = {
-  onClose: PropTypes.func,
-  switchOverlay: PropTypes.func,
-};
-
-SignUp.defaultProps = {
-  onClose: null,
-  switchOverlay: null,
-};
 
 export default SignUp;

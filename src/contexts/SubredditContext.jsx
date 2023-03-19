@@ -41,6 +41,10 @@ export function useBlankSub() {
 
 export function SubredditProvider({ children }) {
   const [subreddit, setSubreddit] = useState(blankSubreddit);
+  /* const subredditProviderValue = useMemo(
+    () => ({ subreddit, setSubreddit }),
+    [subreddit]
+  ); */
   return (
     <SubredditContext.Provider value={subreddit}>
       <SubredditUpdateContext.Provider value={setSubreddit}>

@@ -1,19 +1,26 @@
-import SnooIcon from 'assets/images/snoo-icon.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import './style.css';
-import PropTypes from 'prop-types';
+import { useOverlay } from 'contexts/OverlayContext';
 import { Button } from 'components/ui/Button';
+import SnooIcon from 'assets/images/snoo-icon.png';
 
-function ResetPassword({ onClose, switchOverlay }) {
+function ResetPassword() {
+  // contexts
+  const { resetPassword } = useAuth();
+  const { setOverlay } = useOverlay();
+
+  // references
   const usernameRef = useRef();
   const emailRef = useRef();
-  const { resetPassword } = useAuth();
+
+  // states
   const [error, setError] = useState();
   const [message, setMessage] = useState();
   const [loading, setLoading] = useState(false);
+
   const page = useLocation().pathname === '/account/password';
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -28,7 +35,7 @@ function ResetPassword({ onClose, switchOverlay }) {
     setLoading(false);
   }
   const handleSwitch = (e) => {
-    switchOverlay(e.target.value);
+    setOverlay(e.target.value);
   };
   return (
     <div className="reset-password auth-card">
@@ -85,22 +92,17 @@ function ResetPassword({ onClose, switchOverlay }) {
         )}
       </div>
       {!page && (
-        <Button className="close" onClick={onClose}>
+        <Button
+          className="close"
+          onClick={() => {
+            setOverlay(null);
+          }}
+        >
           X
         </Button>
       )}
     </div>
   );
 }
-
-ResetPassword.propTypes = {
-  onClose: PropTypes.func,
-  switchOverlay: PropTypes.func,
-};
-
-ResetPassword.defaultProps = {
-  onClose: null,
-  switchOverlay: null,
-};
 
 export default ResetPassword;

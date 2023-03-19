@@ -31,6 +31,7 @@ import { SubredditProvider } from 'contexts/SubredditContext';
 
 // Styles
 import './App.css';
+import { OverlayProvider } from 'contexts/OverlayContext';
 
 // This exports the whole icon packs for Brand and Solid.
 library.add(far, fas, fab);
@@ -44,7 +45,7 @@ export default function App() {
             <Route
               path="*"
               element={
-                <>
+                <OverlayProvider>
                   <Header />
                   <MainSidebar />
                   <Routes>
@@ -68,7 +69,7 @@ export default function App() {
                       element={<PrivateRoute element={<Settings />} />}
                     />
                   </Routes>
-                </>
+                </OverlayProvider>
               }
             />
             <Route path="/account/*" element={<AnonymousRoute />}>

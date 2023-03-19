@@ -1,17 +1,26 @@
 import { useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
-import PropTypes from 'prop-types';
+import { useOverlay } from 'contexts/OverlayContext';
 import { Button } from 'components/ui/Button';
 
-export function LogIn({ onClose, switchOverlay }) {
+export function LogIn() {
+  // contexts
+  const { login } = useAuth();
+  const { setOverlay } = useOverlay();
+
+  // navigation
   const navigate = useNavigate();
+  const page = useLocation().pathname.startsWith('/account/login');
+
+  // references
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+
+  // states
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  const page = useLocation().pathname.startsWith('/account/login');
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -31,7 +40,7 @@ export function LogIn({ onClose, switchOverlay }) {
   }
 
   const handleSwitch = (e) => {
-    switchOverlay(e.target.value);
+    setOverlay(e.target.value);
   };
 
   return (
@@ -86,21 +95,17 @@ export function LogIn({ onClose, switchOverlay }) {
         )}
       </div>
       {!page && (
-        <Button className="close" onClick={onClose}>
+        <Button
+          className="close"
+          onClick={() => {
+            setOverlay(null);
+          }}
+        >
           X
         </Button>
       )}
     </div>
   );
 }
-LogIn.propTypes = {
-  onClose: PropTypes.func,
-  switchOverlay: PropTypes.func,
-};
-
-LogIn.defaultProps = {
-  onClose: null,
-  switchOverlay: null,
-};
 
 export default LogIn;

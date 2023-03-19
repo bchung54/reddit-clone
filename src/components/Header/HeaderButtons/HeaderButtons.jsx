@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types';
+import { useAuth } from 'contexts/AuthContext';
+import { useOverlay } from 'contexts/OverlayContext';
 import './style.css';
 
-export default function HeaderButtons({ userID, showOverlay }) {
+export default function HeaderButtons() {
+  const { currentUser } = useAuth();
+  const { setOverlay } = useOverlay();
   const handleClick = (e) => {
-    showOverlay(e.target.value);
+    setOverlay(e.target.value);
   };
-  if (userID === 'guest') {
+  if (!currentUser) {
     return (
       <div className="header-buttons">
         <button
@@ -28,12 +31,3 @@ export default function HeaderButtons({ userID, showOverlay }) {
     );
   }
 }
-
-HeaderButtons.propTypes = {
-  userID: PropTypes.string,
-  showOverlay: PropTypes.func.isRequired,
-};
-
-HeaderButtons.defaultProps = {
-  userID: 'guest',
-};
